@@ -1,7 +1,7 @@
 const PRODUCTS = [
-  { id: 'reta10', name: 'ReTA', strength: '10mg', price: 149.99, category: 'Metabolic Research', image: 'assets/retatrutide-10mg.png' },
-  { id: 'reta15', name: 'ReTA', strength: '15mg', price: 199.99, category: 'Metabolic Research', image: 'assets/retatrutide-15mg.png' },
-  { id: 'reta20', name: 'ReTA', strength: '20mg', price: 249.99, category: 'Metabolic Research', image: 'assets/retatrutide-20mg.png' },
+  { id: 'reta10', name: 'Retatrutide', strength: '10mg', price: 149.99, category: 'Metabolic Research', image: 'assets/retatrutide-10mg.png' },
+  { id: 'reta15', name: 'Retatrutide', strength: '15mg', price: 199.99, category: 'Metabolic Research', image: 'assets/retatrutide-15mg.png' },
+  { id: 'reta20', name: 'Retatrutide', strength: '20mg', price: 249.99, category: 'Metabolic Research', image: 'assets/retatrutide-20mg.png' },
   { id: 'cjcipa10', name: 'CJC-1295 + Ipamorelin Blend', strength: '10mg', price: 119.99, category: 'GH Research', image: 'assets/cjc-ipa-10mg.png' },
   { id: 'bpctb20', name: 'BPC-157 + TB-500 Blend', strength: '20mg', price: 119.99, category: 'Recovery Research', image: 'assets/bpc-tb-20mg.png' },
   { id: 'klow80', name: 'KLOW', strength: '80mg', price: 179.99, category: 'Multi Peptide Blend', image: 'assets/klow-80mg.png' },
@@ -10,7 +10,7 @@ const PRODUCTS = [
 ];
 
 const BANK_ACCOUNT_NAME = 'HTX Peptides NZ';
-const BANK_ACCOUNT_NUMBER = '06-0489-0153992-02';
+const BANK_ACCOUNT_NUMBER = '04-2021-0311907-15';
 const SUPPORT_EMAIL = 'support@htxpeptides.co.nz';
 const SHIPPING_OPTIONS = {
   standard: { label: 'Standard Shipping NZ', price: 7.99, eta: '1-3 business days' },
