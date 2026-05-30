@@ -12,7 +12,6 @@ const PRODUCTS = [
 ];
 
 const WA_NUMBER = '64273211748';
-
 const money = n => `$${Number(n).toFixed(2)} NZD`;
 const getCart = () => JSON.parse(localStorage.getItem('htxCart') || '{}');
 const productById = id => PRODUCTS.find(p => p.id === id);
@@ -23,8 +22,10 @@ function setCart(cart){
 }
 
 function addToCart(id, qty = 1){
+  const product = productById(id);
+  if(!product) return;
   const cart = getCart();
-  cart[id] = (cart[id] || 0) + Number(qty);
+  cart[id] = (cart[id] || 0) + Number(qty || 1);
   setCart(cart);
   openCart();
 }
@@ -69,12 +70,12 @@ function updateCartUI(){
         <b>${item.name}</b>
         <span>${item.strength} • ${money(item.price)}</span>
         <div class="qty">
-          <button onclick="updateQty('${item.id}', ${item.qty - 1})">−</button>
-          <input value="${item.qty}" onchange="updateQty('${item.id}', this.value)">
-          <button onclick="updateQty('${item.id}', ${item.qty + 1})">+</button>
+          <button type="button" data-cart-qty="${item.id}" data-qty="${item.qty - 1}">−</button>
+          <input value="${item.qty}" data-cart-input="${item.id}">
+          <button type="button" data-cart-qty="${item.id}" data-qty="${item.qty + 1}">+</button>
         </div>
       </div>
-      <button class="icon-btn" onclick="removeFromCart('${item.id}')">×</button>
+      <button type="button" class="icon-btn" data-remove="${item.id}">×</button>
     </div>
   `).join('') : '<p class="muted">Your cart is empty.</p>';
 
@@ -99,12 +100,9 @@ function checkoutWhatsApp(){
   const orderRef = 'HTX-' + Date.now().toString().slice(-6);
   const lines = items.map(item => `• ${item.name} ${item.strength} x ${item.qty} — ${money(item.price * item.qty)}`).join('\\n');
 
-  let paymentText = '';
-  if(paymentMethod === 'Bank Transfer'){
-    paymentText = `\\n\\nPayment Method: Bank Transfer\\nReference: ${orderRef}\\n\\nPlease send bank transfer details so I can pay with the reference above.`;
-  } else {
-    paymentText = `\\n\\nPayment Method: Card Payment Link\\nReference: ${orderRef}\\n\\nPlease send me a secure card payment link for this order.`;
-  }
+  const paymentText = paymentMethod === 'Bank Transfer'
+    ? `\\n\\nPayment Method: Bank Transfer\\nReference: ${orderRef}\\n\\nPlease send bank transfer details so I can pay with the reference above.`
+    : `\\n\\nPayment Method: Card Payment Link\\nReference: ${orderRef}\\n\\nPlease send me a secure card payment link for this order.`;
 
   const msg = `Hi HTX Peptides, I’d like to place an order:\\n${lines}\\n\\nSubtotal: ${money(cartTotal())}${paymentText}\\n\\nName:\\nDelivery address:`;
   window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
@@ -115,18 +113,18 @@ function productCard(product){
 
   if(home){
     return `
-      <article class="product-card exact-stock-card" data-cat="${product.category}">
-        <div class="stock-img">
+      <article class="premium-stock-card" data-cat="${product.category}">
+        <div class="premium-img">
           <img src="${product.image}" alt="${product.name} ${product.strength}">
         </div>
-        <div class="stock-info">
+        <div class="premium-info">
           <small>${product.category}</small>
           <h3>${product.name}</h3>
           <p>${product.strength} • Research Use Only</p>
           <b>${money(product.price)}</b>
-          <div class="product-actions stock-actions">
-            <button onclick="viewProduct('${product.id}')" class="btn ghost">View Product</button>
-            <button onclick="addToCart('${product.id}')" class="btn">Add</button>
+          <div class="premium-actions">
+            <button type="button" class="btn ghost" data-view="${product.id}">View Product</button>
+            <button type="button" class="btn" data-add="${product.id}">Add To Cart</button>
           </div>
         </div>
       </article>
@@ -144,8 +142,8 @@ function productCard(product){
         <p>${product.strength}</p>
         <b>${money(product.price)}</b>
         <div class="product-actions">
-          <button onclick="viewProduct('${product.id}')" class="btn ghost">View Product</button>
-          <button onclick="addToCart('${product.id}')" class="btn">Add</button>
+          <button type="button" data-view="${product.id}" class="btn ghost">View Product</button>
+          <button type="button" data-add="${product.id}" class="btn">Add</button>
         </div>
       </div>
     </article>
@@ -155,7 +153,6 @@ function productCard(product){
 function renderProducts(limit){
   const grid = document.querySelector('#productGrid');
   if(!grid) return;
-
   const selected = PRODUCTS.slice(0, limit || PRODUCTS.length);
   grid.innerHTML = selected.map(productCard).join('');
 }
@@ -182,7 +179,7 @@ function viewProduct(id){
 
   modal.innerHTML = `
     <div class="modal-card">
-      <button class="modal-close" onclick="closeModal()">×</button>
+      <button class="modal-close" type="button" onclick="closeModal()">×</button>
       <div class="modal-grid">
         <img src="${product.image}" alt="${product.name}">
         <div>
@@ -197,11 +194,11 @@ function viewProduct(id){
             <li>COA available on request</li>
           </ul>
           <div class="qty big">
-            <button onclick="this.nextElementSibling.stepDown()">−</button>
+            <button type="button" onclick="this.nextElementSibling.stepDown()">−</button>
             <input id="modalQty" type="number" value="1" min="1">
-            <button onclick="this.previousElementSibling.stepUp()">+</button>
+            <button type="button" onclick="this.previousElementSibling.stepUp()">+</button>
           </div>
-          <button class="btn wide" onclick="addToCart('${product.id}', document.querySelector('#modalQty').value); closeModal();">Add to Cart</button>
+          <button class="btn wide" type="button" onclick="addToCart('${product.id}', document.querySelector('#modalQty').value); closeModal();">Add to Cart</button>
         </div>
       </div>
     </div>
@@ -218,6 +215,34 @@ function init(){
   updateCartUI();
   document.querySelector('#searchInput')?.addEventListener('input', filterProducts);
   document.querySelector('#categoryFilter')?.addEventListener('change', filterProducts);
+
+  document.addEventListener('click', event => {
+    const addBtn = event.target.closest('[data-add]');
+    if(addBtn) addToCart(addBtn.dataset.add);
+
+    const viewBtn = event.target.closest('[data-view]');
+    if(viewBtn) viewProduct(viewBtn.dataset.view);
+
+    const removeBtn = event.target.closest('[data-remove]');
+    if(removeBtn) removeFromCart(removeBtn.dataset.remove);
+
+    const qtyBtn = event.target.closest('[data-cart-qty]');
+    if(qtyBtn) updateQty(qtyBtn.dataset.cartQty, qtyBtn.dataset.qty);
+  });
+
+  document.addEventListener('change', event => {
+    const input = event.target.closest('[data-cart-input]');
+    if(input) updateQty(input.dataset.cartInput, input.value);
+  });
 }
+
+window.addToCart = addToCart;
+window.viewProduct = viewProduct;
+window.openCart = openCart;
+window.closeCart = closeCart;
+window.checkoutWhatsApp = checkoutWhatsApp;
+window.closeModal = closeModal;
+window.updateQty = updateQty;
+window.removeFromCart = removeFromCart;
 
 document.addEventListener('DOMContentLoaded', init);

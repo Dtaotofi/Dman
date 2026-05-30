@@ -1258,3 +1258,199 @@ body.exact-reference{
 .exact-reference .stock-img img{
   display:block !important;
 }
+
+
+/* === PREMIUM STOCK CARD REDESIGN + CART FIX === */
+
+/* Hero: keep layout, move vial group right and brighten visible area */
+.exact-reference .exact-hero{
+  background:
+    linear-gradient(90deg,#02060b 0%,#02060b 43%,rgba(2,6,11,.78) 52%,rgba(2,6,11,.12) 66%,rgba(2,6,11,0) 100%),
+    radial-gradient(circle at 82% 48%,rgba(22,141,255,.38),transparent 34%),
+    url('assets/hero-image.png') right 0 top 28px/50% auto no-repeat !important;
+}
+
+/* Larger logo */
+.logo img,
+.exact-logo img,
+.exact-reference .logo img,
+.exact-reference .exact-logo img{
+  width:250px !important;
+  max-height:112px !important;
+  object-fit:contain !important;
+  filter:drop-shadow(0 0 22px rgba(22,141,255,.45)) drop-shadow(0 12px 24px rgba(0,0,0,.55)) !important;
+}
+
+.exact-reference .exact-nav,
+.nav{
+  min-height:120px !important;
+}
+
+/* Current stock heading */
+.exact-reference .current-stock-section{
+  padding:28px 4.8vw 42px !important;
+  background:#02060b !important;
+}
+
+.exact-reference .current-stock-section h2{
+  font-size:28px !important;
+  margin:0 0 26px !important;
+  letter-spacing:.03em;
+}
+
+/* Replace cramped horizontal cards with premium product cards */
+.exact-reference #productGrid.exact-stock-grid,
+.exact-reference .exact-stock-grid{
+  display:grid !important;
+  grid-template-columns:repeat(4,minmax(0,1fr)) !important;
+  gap:24px !important;
+  max-width:1420px !important;
+  margin:0 auto !important;
+}
+
+.premium-stock-card{
+  min-height:520px;
+  display:flex;
+  flex-direction:column;
+  border:1px solid rgba(75,155,255,.22);
+  border-radius:22px;
+  overflow:hidden;
+  background:
+    linear-gradient(180deg,rgba(10,17,28,.94),rgba(4,9,15,.98)),
+    radial-gradient(circle at 50% 24%,rgba(22,141,255,.13),transparent 44%);
+  box-shadow:0 24px 80px rgba(0,0,0,.30);
+  transition:.25s ease;
+}
+
+.premium-stock-card:hover{
+  transform:translateY(-6px);
+  border-color:rgba(0,216,255,.50);
+  box-shadow:0 34px 100px rgba(0,120,255,.16);
+}
+
+.premium-img{
+  height:300px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px 18px;
+  background:
+    radial-gradient(circle at 50% 40%,rgba(22,141,255,.22),transparent 56%),
+    linear-gradient(180deg,rgba(255,255,255,.035),rgba(0,0,0,.08));
+  border-bottom:1px solid rgba(75,155,255,.14);
+}
+
+.premium-img img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  filter:drop-shadow(0 0 22px rgba(22,141,255,.16));
+  transform:scale(1.08);
+}
+
+.premium-info{
+  padding:22px;
+  display:flex;
+  flex-direction:column;
+  flex:1;
+}
+
+.premium-info small{
+  color:#00d8ff;
+  font-size:11px;
+  line-height:1;
+  letter-spacing:.10em;
+  font-weight:900;
+  text-transform:uppercase;
+}
+
+.premium-info h3{
+  color:#fff;
+  font-size:24px;
+  line-height:1.12;
+  margin:12px 0 8px;
+}
+
+.premium-info p{
+  margin:0 0 14px;
+  color:#d9e5f2;
+  font-size:15px;
+}
+
+.premium-info b{
+  color:#fff;
+  font-size:22px;
+  margin-top:auto;
+  margin-bottom:18px;
+}
+
+.premium-actions{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+
+.premium-actions .btn{
+  min-height:48px;
+  border-radius:999px;
+  padding:0 14px;
+  font-size:12px;
+  letter-spacing:.06em;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  pointer-events:auto;
+}
+
+.premium-actions .btn:not(.ghost){
+  color:#001522;
+  background:linear-gradient(135deg,#73e4ff,#20b9ff);
+  border-color:#51d6ff;
+  box-shadow:0 12px 32px rgba(0,160,255,.18);
+}
+
+/* Keep old exact stock card rules from overriding the new premium cards */
+.exact-reference .premium-stock-card .btn{
+  width:auto !important;
+}
+
+/* Cart drawer on top and clickable */
+.cart-drawer{
+  z-index:9999 !important;
+}
+
+button,[data-add],[data-view]{
+  cursor:pointer !important;
+}
+
+/* Responsive */
+@media(max-width:1250px){
+  .exact-reference #productGrid.exact-stock-grid,
+  .exact-reference .exact-stock-grid{
+    grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+  }
+  .premium-stock-card{min-height:500px;}
+}
+
+@media(max-width:900px){
+  .logo img,
+  .exact-logo img,
+  .exact-reference .logo img,
+  .exact-reference .exact-logo img{
+    width:185px !important;
+    max-height:88px !important;
+  }
+  .exact-reference #productGrid.exact-stock-grid,
+  .exact-reference .exact-stock-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+  }
+}
+
+@media(max-width:560px){
+  .exact-reference #productGrid.exact-stock-grid,
+  .exact-reference .exact-stock-grid{
+    grid-template-columns:1fr !important;
+  }
+  .premium-img{height:290px;}
+}
