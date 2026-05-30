@@ -5,10 +5,10 @@ const PRODUCTS = [
   {id:'cjcipa10', name:'CJC-1295 N/D + Ipamorelin', strength:'10mg', price:119.99, category:'GH Research', image:'assets/cjc-ipa-10mg.png'},
   {id:'bpctb20', name:'BPC-157 + TB-500', strength:'10mg + 10mg', price:119.99, category:'Recovery Research', image:'assets/bpc-tb-20mg.png'},
   {id:'klow80', name:'KLOW', strength:'80mg', price:179.99, category:'Multi Peptide Blend', image:'assets/klow-80mg.png'},
-  {id:'mots10', name:'MOTS-C', strength:'10mg', price:99.99, category:'Cellular Research', image:'assets/mots-c-10mg.png'},
-  {id:'igf1', name:'IGF-1 LR3', strength:'1mg', price:119.99, category:'GH Research', image:'assets/igf-1-lr3-1mg.png'},
   {id:'bac3', name:'BAC Water', strength:'3ml', price:19.99, category:'Ancillary', image:'assets/bac-water-3ml.png'},
-  {id:'bac10', name:'BAC Water', strength:'10ml', price:29.99, category:'Ancillary', image:'assets/bac-water-10ml.png'}
+  {id:'bac10', name:'BAC Water', strength:'10ml', price:29.99, category:'Ancillary', image:'assets/bac-water-10ml.png'},
+  {id:'mots10', name:'MOTS-C', strength:'10mg', price:99.99, category:'Cellular Research', image:'assets/mots-c-10mg.png'},
+  {id:'igf1', name:'IGF-1 LR3', strength:'1mg', price:119.99, category:'GH Research', image:'assets/igf-1-lr3-1mg.png'}
 ];
 
 const WA_NUMBER = '64273211748';
@@ -101,7 +101,7 @@ function checkoutWhatsApp(){
   const lines = items.map(item => `• ${item.name} ${item.strength} x ${item.qty} — ${money(item.price * item.qty)}`).join('\\n');
 
   const paymentText = paymentMethod === 'Bank Transfer'
-    ? `\\n\\nPayment Method: Bank Transfer\\nReference: ${orderRef}\\n\\nPlease send bank transfer details so I can pay with the reference above.`
+    ? `\\n\\nPayment Method: Bank Transfer\\nReference: ${orderRef}\\n\\nBank Transfer Details:\\nAccount Name: HTX Peptides NZ\\nAccount Number: 06-0489-0153992-02\\nReference: ${orderRef}`
     : `\\n\\nPayment Method: Card Payment Link\\nReference: ${orderRef}\\n\\nPlease send me a secure card payment link for this order.`;
 
   const msg = `Hi HTX Peptides, I’d like to place an order:\\n${lines}\\n\\nSubtotal: ${money(cartTotal())}${paymentText}\\n\\nName:\\nDelivery address:`;
@@ -218,16 +218,31 @@ function init(){
 
   document.addEventListener('click', event => {
     const addBtn = event.target.closest('[data-add]');
-    if(addBtn) addToCart(addBtn.dataset.add);
+    if(addBtn){
+      event.preventDefault();
+      addToCart(addBtn.dataset.add);
+      return;
+    }
 
     const viewBtn = event.target.closest('[data-view]');
-    if(viewBtn) viewProduct(viewBtn.dataset.view);
+    if(viewBtn){
+      event.preventDefault();
+      viewProduct(viewBtn.dataset.view);
+      return;
+    }
 
     const removeBtn = event.target.closest('[data-remove]');
-    if(removeBtn) removeFromCart(removeBtn.dataset.remove);
+    if(removeBtn){
+      event.preventDefault();
+      removeFromCart(removeBtn.dataset.remove);
+      return;
+    }
 
     const qtyBtn = event.target.closest('[data-cart-qty]');
-    if(qtyBtn) updateQty(qtyBtn.dataset.cartQty, qtyBtn.dataset.qty);
+    if(qtyBtn){
+      event.preventDefault();
+      updateQty(qtyBtn.dataset.cartQty, qtyBtn.dataset.qty);
+    }
   });
 
   document.addEventListener('change', event => {

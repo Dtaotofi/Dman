@@ -1454,3 +1454,173 @@ button,[data-add],[data-view]{
   }
   .premium-img{height:290px;}
 }
+
+
+/* === FINAL USER REQUEST: 8 STOCK CARDS, BIGGER LOGO, BRIGHTER HERO, WORKING CART === */
+
+.logo img,
+.exact-logo img,
+.exact-reference .logo img,
+.exact-reference .exact-logo img{
+  width:275px !important;
+  max-height:124px !important;
+  object-fit:contain !important;
+  filter:drop-shadow(0 0 28px rgba(22,141,255,.55)) drop-shadow(0 14px 28px rgba(0,0,0,.58)) !important;
+}
+
+.exact-reference .exact-nav,
+.nav{
+  min-height:130px !important;
+}
+
+.exact-reference .exact-hero{
+  background:
+    linear-gradient(90deg,#02060b 0%,#02060b 42%,rgba(2,6,11,.76) 52%,rgba(2,6,11,.08) 67%,rgba(2,6,11,0) 100%),
+    radial-gradient(circle at 82% 48%,rgba(22,141,255,.46),transparent 35%),
+    url('assets/hero-image.png') right 0 top 22px/51% auto no-repeat !important;
+}
+
+.exact-reference .current-stock-section{
+  padding:32px 4.8vw 48px !important;
+}
+
+.exact-reference #productGrid.exact-stock-grid,
+.exact-reference .exact-stock-grid{
+  display:grid !important;
+  grid-template-columns:repeat(4,minmax(0,1fr)) !important;
+  gap:24px !important;
+  max-width:1420px !important;
+  margin:0 auto !important;
+}
+
+.premium-stock-card{
+  min-height:520px !important;
+  display:flex !important;
+  flex-direction:column !important;
+  border:1px solid rgba(75,155,255,.24) !important;
+  border-radius:22px !important;
+  overflow:hidden !important;
+  background:
+    linear-gradient(180deg,rgba(10,17,28,.94),rgba(4,9,15,.98)),
+    radial-gradient(circle at 50% 24%,rgba(22,141,255,.14),transparent 44%) !important;
+  box-shadow:0 24px 80px rgba(0,0,0,.30) !important;
+}
+
+.premium-img{
+  height:300px !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  padding:20px 18px !important;
+  background:
+    radial-gradient(circle at 50% 42%,rgba(22,141,255,.25),transparent 56%),
+    linear-gradient(180deg,rgba(255,255,255,.04),rgba(0,0,0,.08)) !important;
+  border-bottom:1px solid rgba(75,155,255,.14) !important;
+}
+
+.premium-img img{
+  width:100% !important;
+  height:100% !important;
+  object-fit:contain !important;
+  transform:scale(1.08) !important;
+}
+
+.premium-info{
+  padding:22px !important;
+  display:flex !important;
+  flex-direction:column !important;
+  flex:1 !important;
+}
+
+.premium-info small{
+  color:#00d8ff !important;
+  font-size:11px !important;
+  letter-spacing:.10em !important;
+  text-transform:uppercase !important;
+  font-weight:900 !important;
+}
+
+.premium-info h3{
+  font-size:24px !important;
+  margin:12px 0 8px !important;
+}
+
+.premium-info p{
+  font-size:15px !important;
+  color:#d9e5f2 !important;
+  margin:0 0 14px !important;
+}
+
+.premium-info b{
+  font-size:22px !important;
+  margin-top:auto !important;
+  margin-bottom:18px !important;
+}
+
+.premium-actions{
+  display:grid !important;
+  grid-template-columns:1fr 1fr !important;
+  gap:12px !important;
+}
+
+.premium-actions .btn{
+  min-height:48px !important;
+  border-radius:999px !important;
+  padding:0 14px !important;
+  font-size:12px !important;
+  letter-spacing:.06em !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  pointer-events:auto !important;
+  cursor:pointer !important;
+}
+
+.premium-actions .btn:not(.ghost){
+  color:#001522 !important;
+  background:linear-gradient(135deg,#73e4ff,#20b9ff) !important;
+  border-color:#51d6ff !important;
+  box-shadow:0 12px 32px rgba(0,160,255,.18) !important;
+}
+
+/* Make cart drawer definitely appear over page */
+.cart-drawer{
+  z-index:99999 !important;
+}
+
+.cart-open .cart-drawer{
+  transform:translateX(0) !important;
+}
+
+button,[data-add],[data-view]{
+  cursor:pointer !important;
+}
+
+@media(max-width:1250px){
+  .exact-reference #productGrid.exact-stock-grid,
+  .exact-reference .exact-stock-grid{
+    grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+  }
+}
+
+@media(max-width:900px){
+  .logo img,
+  .exact-logo img,
+  .exact-reference .logo img,
+  .exact-reference .exact-logo img{
+    width:200px !important;
+    max-height:94px !important;
+  }
+
+  .exact-reference #productGrid.exact-stock-grid,
+  .exact-reference .exact-stock-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+  }
+}
+
+@media(max-width:560px){
+  .exact-reference #productGrid.exact-stock-grid,
+  .exact-reference .exact-stock-grid{
+    grid-template-columns:1fr !important;
+  }
+}
