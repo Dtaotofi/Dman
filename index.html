@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>HTX Peptides NZ</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="script.js"></script>
+</head>
+<body data-limit="6" class="home-page exact-reference">
+  <div class="topbar exact-topbar">
+    <span>⚗ RESEARCH USE ONLY</span>
+    <span>NOT FOR HUMAN USE</span>
+    <span>🧪 LAB TESTED</span>
+    <span>🚚 FAST & DISCREET NZ SHIPPING</span>
+  </div>
+
+  <nav class="nav exact-nav">
+    <a href="index.html" class="logo exact-logo" aria-label="HTX Peptides NZ">
+      <img src="assets/htx-logo-transparent.png" alt="HTX Peptides NZ">
+    </a>
+
+    <div class="nav-links exact-nav-links">
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="index.html#faq">FAQ</a>
+      <a href="index.html#shipping">Shipping</a>
+      <a href="coa-testing.html">COA</a>
+      <a href="terms.html">Terms</a>
+      <a href="https://wa.me/64273211748" target="_blank" rel="noopener">WhatsApp</a>
+    </div>
+
+    <button class="cart-btn exact-cart" onclick="openCart()">Cart <span class="cart-count">0</span></button>
+  </nav>
+
+  <section class="hero exact-hero">
+    <div class="hero-content">
+      <p class="eyebrow">Premium Research Peptides</p>
+      <h1>Purity.<br>Precision.<br><span>Performance.</span></h1>
+      <p class="lead">Premium lyophilized peptides for research use only. Trusted quality, verified purity, and clean NZ-wide ordering via WhatsApp.</p>
+
+      <div class="hero-actions">
+        <a class="btn exact-primary" href="shop.html">Shop Peptides →</a>
+        <a class="btn ghost exact-ghost" href="#coa">Learn More</a>
+      </div>
+
+      <div class="feature-row exact-feature-row">
+        <div class="feature exact-feature">
+          <div class="feature-icon">⚗</div>
+          <div><b>Lab Tested</b><span>Purity verified</span></div>
+        </div>
+        <div class="feature exact-feature">
+          <div class="feature-icon">🔗</div>
+          <div><b>Cold Chain</b><span>Secure delivery</span></div>
+        </div>
+        <div class="feature exact-feature">
+          <div class="feature-icon">🛡</div>
+          <div><b>Research Use Only</b><span>Not for human use</span></div>
+        </div>
+        <div class="feature exact-feature">
+          <div class="feature-icon">📄</div>
+          <div><b>COA Available</b><span>Batch specific results</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="current-stock-section">
+    <h2>Current Stock</h2>
+    <div id="productGrid" class="product-grid exact-stock-grid"></div>
+    <div class="stock-more"><a href="shop.html" class="btn ghost exact-view-all">View All Products</a></div>
+  </section>
+
+  <section class="recommendations-section">
+    <div class="recommendation-grid">
+      <article class="recommend-card">
+        <h3>☆ Recommendations</h3>
+        <ul>
+          <li>Start low and go slow</li>
+          <li>Follow proper reconstitution guidelines</li>
+          <li>Store peptides in the refrigerator at 2°C - 8°C</li>
+          <li>Use bacteriostatic water for reconstitution</li>
+          <li>For research use only - not for human consumption</li>
+        </ul>
+      </article>
+
+      <article class="recommend-card" id="faq">
+        <h3>？ Frequently Asked Questions</h3>
+        <details><summary>What are research peptides?</summary><p>Research peptides are compounds supplied strictly for laboratory research and analytical purposes.</p></details>
+        <details><summary>Are these products for human use?</summary><p>No. All products are sold strictly for laboratory research use only and are not for human consumption.</p></details>
+        <details><summary>How long does shipping take?</summary><p>Standard NZ Post is 1-3 business days. Express NZ Post is 1-2 business days. Rural addresses may take longer.</p></details>
+        <details><summary>How should I store my peptides?</summary><p>Store refrigerated at 2°C - 8°C unless otherwise directed on the product label.</p></details>
+        <details><summary>How do I request a COA?</summary><p>Contact support with the product name and batch details to request batch-specific documentation.</p></details>
+      </article>
+
+      <article class="recommend-card shipping-card" id="shipping">
+        <h3>🚚 NZ Shipping</h3>
+        <div class="ship-line"><span>Standard NZ Post<br><small>1-3 business days</small></span><b>$7.99 NZD</b></div>
+        <div class="ship-line"><span>Express NZ Post<br><small>1-2 business days</small></span><b>$11.99 NZD</b></div>
+        <div class="ship-line"><span>Rural Delivery<br><small>Additional 1-2 days</small></span><b>$5.99 NZD</b></div>
+        <strong class="free-ship">Free shipping on orders over $200 NZD</strong>
+      </article>
+    </div>
+
+    <div class="bottom-trust">
+      <div><span>▣</span><b>Discreet Packaging</b><small>Plain, unbranded packaging</small></div>
+      <div><span>◇</span><b>NZ Based</b><small>Local support team</small></div>
+      <div><span>▤</span><b>Secure Checkout</b><small>Safe WhatsApp ordering</small></div>
+      <div><span>◉</span><b>WhatsApp Support</b><small>Fast response times</small></div>
+    </div>
+  </section>
+
+  <aside class="cart-drawer">
+    <div class="cart-head"><h2>Your Cart</h2><button class="icon-btn" onclick="closeCart()">×</button></div>
+    <div id="cartItems" class="cart-items"></div>
+    <div class="cart-foot">
+      <div class="subtotal"><span>Subtotal</span><b id="cartSubtotal">$0.00 NZD</b></div>
+      <label class="payment-label" for="paymentMethod">Payment Method</label>
+<select id="paymentMethod" class="payment-select">
+  <option value="Bank Transfer">Bank Transfer</option>
+  <option value="Card Payment Link">Card Payment Link</option>
+</select>
+<button class="btn wide" onclick="checkoutWhatsApp()">Checkout via WhatsApp</button>
+      <p class="muted">Checkout opens WhatsApp with your order details.</p>
+    </div>
+  </aside>
+
+  <div id="productModal" class="modal"></div>
+
+  <footer class="footer exact-footer">
+    <img src="assets/htx-logo-transparent.png" alt="HTX Peptides NZ">
+    <p>Research Use Only • Not For Human Use • Lab Tested • Batch Verified</p>
+    <p><a href="mailto:support@htxpeptides.co.nz">support@htxpeptides.co.nz</a> • WhatsApp: +64 27 321 1748</p>
+  </footer>
+</body>
+</html>

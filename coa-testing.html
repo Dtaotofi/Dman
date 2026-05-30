@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>COA & Testing | HTX Peptides NZ</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <div class="topbar exact-topbar">
+    <span>⚗ RESEARCH USE ONLY</span>
+    <span>NOT FOR HUMAN USE</span>
+    <span>🧪 LAB TESTED</span>
+    <span>🚚 FAST & DISCREET NZ SHIPPING</span>
+  </div>
+
+  <nav class="nav exact-nav">
+    <a href="index.html" class="logo exact-logo" aria-label="HTX Peptides NZ">
+      <img src="assets/htx-logo-transparent.png" alt="HTX Peptides NZ">
+    </a>
+    <div class="nav-links exact-nav-links">
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="index.html#faq">FAQ</a>
+      <a href="index.html#shipping">Shipping</a>
+      <a href="coa-testing.html">COA</a>
+      <a href="terms.html">Terms</a>
+      <a href="https://wa.me/64273211748" target="_blank" rel="noopener">WhatsApp</a>
+    </div>
+
+    <button class="cart-btn exact-cart" onclick="openCart()">Cart <span class="cart-count">0</span></button>
+  </nav>
+
+  <section class="page-hero coa-hero">
+    <p class="eyebrow">COA & Testing</p>
+    <h1>Batch Verification</h1>
+    <p class="lead">Certificate of Analysis information for current HTX Peptides NZ stock. Contact support for batch-specific documentation.</p>
+  </section>
+
+  <section class="section coa-page-section">
+    <div class="coa-grid">
+      <article class="coa-product-card">
+        <img src="assets/retatrutide-10mg.png" alt="Retatrutide COA">
+        <div>
+          <small>COA Available</small>
+          <h2>Retatrutide</h2>
+          <p class="muted">Batch verification available on request for Retatrutide stock.</p>
+          <ul class="clean-list">
+            <li>Research use only</li>
+            <li>Batch documentation available</li>
+            <li>Contact support for current batch details</li>
+          </ul>
+          <a class="btn" href="https://wa.me/64273211748?text=Hi%20HTX%20Peptides%2C%20can%20I%20please%20request%20the%20COA%20for%20Retatrutide%20%2F%20ReTA%3F" target="_blank" rel="noopener">Request Retatrutide COA</a>
+        </div>
+      </article>
+
+      <article class="coa-product-card">
+        <img src="assets/klow-80mg.png" alt="KLOW COA">
+        <div>
+          <small>COA Available</small>
+          <h2>KLOW 80mg Blend</h2>
+          <p class="muted">Batch verification available on request for KLOW 80mg Blend stock.</p>
+          <ul class="clean-list">
+            <li>Research use only</li>
+            <li>Blend documentation available</li>
+            <li>Contact support for current batch details</li>
+          </ul>
+          <a class="btn" href="https://wa.me/64273211748?text=Hi%20HTX%20Peptides%2C%20can%20I%20please%20request%20the%20COA%20for%20KLOW%3F" target="_blank" rel="noopener">Request KLOW COA</a>
+        </div>
+      </article>
+
+      <article class="coa-product-card">
+        <img src="assets/bpc-tb-20mg.png" alt="BPC TB Blend COA">
+        <div>
+          <small>COA Available</small>
+          <h2>BPC-157 + TB-500 Blend 20mg</h2>
+          <p class="muted">Batch verification available on request for the BPC/TB blend.</p>
+          <ul class="clean-list">
+            <li>Research use only</li>
+            <li>Blend documentation available</li>
+            <li>Contact support for current batch details</li>
+          </ul>
+          <a class="btn" href="https://wa.me/64273211748?text=Hi%20HTX%20Peptides%2C%20can%20I%20please%20request%20the%20COA%20for%20BPC-157%20%2B%20TB-500%20Blend%3F" target="_blank" rel="noopener">Request BPC/TB COA</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <aside class="cart-drawer">
+    <div class="cart-head"><h2>Your Cart</h2><button class="icon-btn" onclick="closeCart()">×</button></div>
+    <div id="cartItems" class="cart-items"></div>
+    <div class="cart-foot">
+      <div class="subtotal"><span>Subtotal</span><b id="cartSubtotal">$0.00 NZD</b></div>
+      <label class="payment-label" for="paymentMethod">Payment Method</label>
+      <select id="paymentMethod" class="payment-select">
+        <option value="Bank Transfer">Bank Transfer</option>
+        <option value="Card Payment Link">Card Payment Link</option>
+      </select>
+      <button class="btn wide" onclick="checkoutWhatsApp()">Checkout via WhatsApp</button>
+      <p class="muted">Checkout opens WhatsApp with your order and payment method.</p>
+    </div>
+  </aside>
+  <div id="productModal" class="modal"></div>
+  <footer class="footer exact-footer">
+    <img src="assets/htx-logo-transparent.png" alt="HTX Peptides NZ">
+    <p>Research Use Only • Not For Human Use • Lab Tested • Batch Verified</p>
+  </footer>
+</body>
+</html>
