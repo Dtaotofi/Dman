@@ -1633,8 +1633,8 @@ button,[data-add],[data-view]{
 .exact-logo img,
 .exact-reference .logo img,
 .exact-reference .exact-logo img{
-  width: 390px !important;
-  max-height: 175px !important;
+  width: 500px !important;
+  max-height: 220px !important;
   object-fit: contain !important;
   opacity: 1 !important;
   filter: drop-shadow(0 0 34px rgba(22,141,255,.62)) drop-shadow(0 16px 30px rgba(0,0,0,.65)) !important;
@@ -1823,8 +1823,8 @@ img { max-width: 100%; }
   .exact-logo img,
   .exact-reference .logo img,
   .exact-reference .exact-logo img{
-    width:220px !important;
-    max-height:98px !important;
+    width:280px !important;
+    max-height:120px !important;
   }
   .cart-btn,.exact-reference .exact-cart{padding:10px 12px !important;font-size:14px !important;}
   .exact-reference .exact-hero{height:auto !important;min-height:0 !important;padding:28px 20px 24px !important;background-position:right top !important;background-size:95% auto !important;}
