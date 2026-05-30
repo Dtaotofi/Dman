@@ -27,7 +27,7 @@
       <a href="index.html#shipping">Shipping</a>
       <a href="coa-testing.html">COA</a>
       <a href="terms.html">Terms</a>
-      <a href="https://wa.me/64273211748" target="_blank" rel="noopener">WhatsApp</a>
+      <a href="contact.html">Support</a>
     </div>
 
     <button class="cart-btn exact-cart" onclick="openCart()">Cart <span class="cart-count">0</span></button>
@@ -52,7 +52,7 @@
             <li>Batch documentation available</li>
             <li>Contact support for current batch details</li>
           </ul>
-          <a class="btn" href="https://wa.me/64273211748?text=Hi%20HTX%20Peptides%2C%20can%20I%20please%20request%20the%20COA%20for%20Retatrutide%20%2F%20ReTA%3F" target="_blank" rel="noopener">Request Retatrutide COA</a>
+          <a class="btn" href="mailto:support@htxpeptides.co.nz?subject=Request Retatrutide COA">Request Retatrutide COA</a>
         </div>
       </article>
 
@@ -67,7 +67,7 @@
             <li>Blend documentation available</li>
             <li>Contact support for current batch details</li>
           </ul>
-          <a class="btn" href="https://wa.me/64273211748?text=Hi%20HTX%20Peptides%2C%20can%20I%20please%20request%20the%20COA%20for%20KLOW%3F" target="_blank" rel="noopener">Request KLOW COA</a>
+          <a class="btn" href="mailto:support@htxpeptides.co.nz?subject=Request KLOW COA">Request KLOW COA</a>
         </div>
       </article>
 
@@ -82,7 +82,7 @@
             <li>Blend documentation available</li>
             <li>Contact support for current batch details</li>
           </ul>
-          <a class="btn" href="https://wa.me/64273211748?text=Hi%20HTX%20Peptides%2C%20can%20I%20please%20request%20the%20COA%20for%20BPC-157%20%2B%20TB-500%20Blend%3F" target="_blank" rel="noopener">Request BPC/TB COA</a>
+          <a class="btn" href="mailto:support@htxpeptides.co.nz?subject=Request BPC/TB COA">Request BPC/TB COA</a>
         </div>
       </article>
     </div>
@@ -93,15 +93,10 @@
     <div id="cartItems" class="cart-items"></div>
     <div class="cart-foot">
       <div class="subtotal"><span>Subtotal</span><b id="cartSubtotal">$0.00 NZD</b></div>
-      <label class="payment-label" for="paymentMethod">Payment Method</label>
-      <select id="paymentMethod" class="payment-select">
-        <option value="Bank Transfer">Bank Transfer</option>
-        <option value="Card Payment Link">Card Payment Link</option>
-      </select>
-      <button class="btn wide" onclick="checkoutWhatsApp()">Checkout via WhatsApp</button>
-      <p class="muted">Checkout opens WhatsApp with your order and payment method.</p>
-    </div>
-  </aside>
+      <div class="free-shipping-note">Free Shipping on Orders Over $200</div>
+      <button class="btn wide" type="button" data-checkout>Proceed to Checkout</button>
+      <p class="muted">Checkout uses bank transfer payment details. No WhatsApp redirect.</p>
+    </div></aside>
   <div id="productModal" class="modal"></div>
   <footer class="footer exact-footer">
     <img src="assets/htx-logo-transparent.png" alt="HTX Peptides NZ">

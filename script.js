@@ -1,22 +1,25 @@
 const PRODUCTS = [
-  { id: 'reta10', name: 'Retatrutide', strength: '10mg', price: 149.99, category: 'Metabolic Research', image: 'assets/retatrutide-10mg.png' },
-  { id: 'reta15', name: 'Retatrutide', strength: '15mg', price: 199.99, category: 'Metabolic Research', image: 'assets/retatrutide-15mg.png' },
-  { id: 'reta20', name: 'Retatrutide', strength: '20mg', price: 249.99, category: 'Metabolic Research', image: 'assets/retatrutide-20mg.png' },
-  { id: 'cjcipa10', name: 'CJC-1295 N/D + Ipamorelin', strength: '10mg', price: 119.99, category: 'GH Research', image: 'assets/cjc-ipa-10mg.png' },
-  { id: 'bpctb20', name: 'BPC-157 + TB-500', strength: '10mg + 10mg', price: 119.99, category: 'Recovery Research', image: 'assets/bpc-tb-20mg.png' },
+  { id: 'reta10', name: 'ReTA', strength: '10mg', price: 149.99, category: 'Metabolic Research', image: 'assets/retatrutide-10mg.png' },
+  { id: 'reta15', name: 'ReTA', strength: '15mg', price: 199.99, category: 'Metabolic Research', image: 'assets/retatrutide-15mg.png' },
+  { id: 'reta20', name: 'ReTA', strength: '20mg', price: 249.99, category: 'Metabolic Research', image: 'assets/retatrutide-20mg.png' },
+  { id: 'cjcipa10', name: 'CJC-1295 + Ipamorelin Blend', strength: '10mg', price: 119.99, category: 'GH Research', image: 'assets/cjc-ipa-10mg.png' },
+  { id: 'bpctb20', name: 'BPC-157 + TB-500 Blend', strength: '20mg', price: 119.99, category: 'Recovery Research', image: 'assets/bpc-tb-20mg.png' },
   { id: 'klow80', name: 'KLOW', strength: '80mg', price: 179.99, category: 'Multi Peptide Blend', image: 'assets/klow-80mg.png' },
   { id: 'bac3', name: 'BAC Water', strength: '3ml', price: 19.99, category: 'Ancillary', image: 'assets/bac-water-3ml.png' },
-  { id: 'bac10', name: 'BAC Water', strength: '10ml', price: 29.99, category: 'Ancillary', image: 'assets/bac-water-10ml.png' },
-  { id: 'mots10', name: 'MOTS-C', strength: '10mg', price: 99.99, category: 'Cellular Research', image: 'assets/mots-c-10mg.png' },
-  { id: 'igf1', name: 'IGF-1 LR3', strength: '1mg', price: 119.99, category: 'GH Research', image: 'assets/igf-1-lr3-1mg.png' }
+  { id: 'bac10', name: 'BAC Water', strength: '10ml', price: 29.99, category: 'Ancillary', image: 'assets/bac-water-10ml.png' }
 ];
 
-const WA_NUMBER = '64273211748';
 const BANK_ACCOUNT_NAME = 'HTX Peptides NZ';
 const BANK_ACCOUNT_NUMBER = '06-0489-0153992-02';
+const SUPPORT_EMAIL = 'support@htxpeptides.co.nz';
+const SHIPPING_OPTIONS = {
+  standard: { label: 'Standard Shipping NZ', price: 7.99, eta: '1-3 business days' },
+  express: { label: 'Express Shipping NZ', price: 11.99, eta: '1-2 business days' },
+  rural: { label: 'Rural Delivery', price: 13.98, eta: '2-5 business days' }
+};
 
 function money(value) {
-  return `$${Number(value).toFixed(2)} NZD`;
+  return `$${Number(value || 0).toFixed(2)} NZD`;
 }
 
 function getProduct(id) {
@@ -51,25 +54,25 @@ function cartTotal() {
   return cartItems().reduce((sum, item) => sum + item.price * item.qty, 0);
 }
 
+function cartCount() {
+  return cartItems().reduce((sum, item) => sum + item.qty, 0);
+}
+
 function addToCart(id, qty = 1) {
   const product = getProduct(id);
-  if (!product) {
-    console.warn('Product not found:', id);
-    return;
-  }
+  if (!product) return;
 
   const cart = getCart();
   cart[id] = (Number(cart[id]) || 0) + Number(qty || 1);
   saveCart(cart);
   openCart();
 
-  const count = document.querySelector('.cart-count');
-  if (count) {
+  document.querySelectorAll('.cart-count').forEach(count => {
     count.animate([{ transform: 'scale(1)' }, { transform: 'scale(1.35)' }, { transform: 'scale(1)' }], {
       duration: 280,
       easing: 'ease-out'
     });
-  }
+  });
 }
 
 function removeFromCart(id) {
@@ -88,7 +91,7 @@ function updateQty(id, qty) {
 
 function renderCart() {
   const items = cartItems();
-  const count = items.reduce((sum, item) => sum + item.qty, 0);
+  const count = cartCount();
 
   document.querySelectorAll('.cart-count').forEach(el => {
     el.textContent = count;
@@ -98,17 +101,17 @@ function renderCart() {
   if (cartBox) {
     cartBox.innerHTML = items.length ? items.map(item => `
       <div class="cart-line">
-        <img src="${item.image}" alt="${item.name}">
+        <img src="${item.image}" alt="${item.name} ${item.strength}" loading="lazy">
         <div>
           <b>${item.name}</b>
           <span>${item.strength} • ${money(item.price)}</span>
           <div class="qty">
             <button type="button" class="qty-btn" data-qty-id="${item.id}" data-qty="${item.qty - 1}">−</button>
-            <input value="${item.qty}" inputmode="numeric" data-qty-input="${item.id}">
+            <input value="${item.qty}" inputmode="numeric" data-qty-input="${item.id}" aria-label="Quantity for ${item.name}">
             <button type="button" class="qty-btn" data-qty-id="${item.id}" data-qty="${item.qty + 1}">+</button>
           </div>
         </div>
-        <button type="button" class="icon-btn" data-remove-id="${item.id}">×</button>
+        <button type="button" class="icon-btn" data-remove-id="${item.id}" aria-label="Remove ${item.name}">×</button>
       </div>
     `).join('') : '<p class="muted">Your cart is empty.</p>';
   }
@@ -133,7 +136,7 @@ function productCard(product) {
     return `
       <article class="premium-stock-card">
         <div class="premium-img">
-          <img src="${product.image}" alt="${product.name} ${product.strength}">
+          <img src="${product.image}" alt="${product.name} ${product.strength}" loading="lazy">
         </div>
         <div class="premium-info">
           <small>${product.category}</small>
@@ -152,7 +155,7 @@ function productCard(product) {
   return `
     <article class="product-card">
       <div class="product-img-wrap">
-        <img src="${product.image}" alt="${product.name} ${product.strength}">
+        <img src="${product.image}" alt="${product.name} ${product.strength}" loading="lazy">
       </div>
       <div class="product-info">
         <small>${product.category}</small>
@@ -185,7 +188,7 @@ function viewProduct(id) {
     <div class="modal-card">
       <button class="modal-close" type="button" data-close-modal>×</button>
       <div class="modal-grid">
-        <img src="${product.image}" alt="${product.name}">
+        <img src="${product.image}" alt="${product.name} ${product.strength}" loading="lazy">
         <div>
           <small class="eyebrow">${product.category}</small>
           <h2>${product.name}</h2>
@@ -209,23 +212,167 @@ function closeModal() {
   document.querySelector('#productModal')?.classList.remove('show');
 }
 
-function checkoutWhatsApp() {
+function goToCheckout() {
+  if (!cartItems().length) {
+    alert('Your cart is empty.');
+    return;
+  }
+  window.location.href = 'checkout.html';
+}
+
+function generateOrderNumber() {
+  const last = Number(localStorage.getItem('htxLastOrderNumber') || '10000') + 1;
+  localStorage.setItem('htxLastOrderNumber', String(last));
+  return `HTX-${last}`;
+}
+
+function shippingCost(subtotal, key) {
+  if (subtotal >= 200) return 0;
+  return SHIPPING_OPTIONS[key]?.price ?? SHIPPING_OPTIONS.standard.price;
+}
+
+function getCheckoutFormData() {
+  return {
+    fullName: document.querySelector('#fullName')?.value.trim() || '',
+    email: document.querySelector('#email')?.value.trim() || '',
+    phone: document.querySelector('#phone')?.value.trim() || '',
+    address: document.querySelector('#address')?.value.trim() || '',
+    shipping: document.querySelector('input[name="shippingOption"]:checked')?.value || 'standard'
+  };
+}
+
+function renderCheckoutSummary() {
+  const summary = document.querySelector('#checkoutSummary');
+  if (!summary) return;
+
+  const items = cartItems();
+  const form = getCheckoutFormData();
+  const subtotal = cartTotal();
+  const ship = shippingCost(subtotal, form.shipping);
+  const total = subtotal + ship;
+  const option = SHIPPING_OPTIONS[form.shipping] || SHIPPING_OPTIONS.standard;
+
+  if (!items.length) {
+    summary.innerHTML = '<p class="muted">Your cart is empty.</p><a class="btn wide" href="shop.html">Return to Shop</a>';
+    return;
+  }
+
+  summary.innerHTML = `
+    <div class="checkout-products">
+      ${items.map(item => `
+        <div class="checkout-product-line">
+          <img src="${item.image}" alt="${item.name} ${item.strength}" loading="lazy">
+          <div><b>${item.name}</b><span>${item.strength} × ${item.qty}</span></div>
+          <strong>${money(item.price * item.qty)}</strong>
+        </div>
+      `).join('')}
+    </div>
+    <div class="checkout-totals">
+      <div><span>Subtotal</span><b>${money(subtotal)}</b></div>
+      <div><span>${subtotal >= 200 ? 'Free Shipping' : option.label}</span><b>${ship === 0 ? '$0.00 NZD' : money(ship)}</b></div>
+      <div class="checkout-total"><span>Total</span><b>${money(total)}</b></div>
+    </div>
+  `;
+}
+
+function placeBankOrder(event) {
+  event?.preventDefault();
   const items = cartItems();
   if (!items.length) {
     alert('Your cart is empty.');
     return;
   }
 
-  const paymentMethod = document.querySelector('#paymentMethod')?.value || 'Bank Transfer';
-  const orderRef = 'HTX-' + Date.now().toString().slice(-6);
-  const lines = items.map(item => `• ${item.name} ${item.strength} x ${item.qty} — ${money(item.price * item.qty)}`).join('\\n');
+  const form = getCheckoutFormData();
+  if (!form.fullName || !form.email || !form.phone || !form.address) {
+    alert('Please complete your name, email, phone and shipping address.');
+    return;
+  }
 
-  const paymentText = paymentMethod === 'Bank Transfer'
-    ? `\\n\\nPayment Method: Bank Transfer\\nAccount Name: ${BANK_ACCOUNT_NAME}\\nAccount Number: ${BANK_ACCOUNT_NUMBER}\\nReference: ${orderRef}`
-    : `\\n\\nPayment Method: Card Payment Link\\nReference: ${orderRef}\\nPlease send me a secure card payment link for this order.`;
+  const subtotal = cartTotal();
+  const selectedShipping = SHIPPING_OPTIONS[form.shipping] || SHIPPING_OPTIONS.standard;
+  const shipping = shippingCost(subtotal, form.shipping);
+  const orderNumber = generateOrderNumber();
+  const total = subtotal + shipping;
 
-  const message = `Hi HTX Peptides, I would like to place an order:\\n${lines}\\n\\nSubtotal: ${money(cartTotal())}${paymentText}\\n\\nName:\\nDelivery address:`;
-  window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(message)}`, '_blank');
+  const order = {
+    orderNumber,
+    customer: {
+      fullName: form.fullName,
+      email: form.email,
+      phone: form.phone,
+      address: form.address
+    },
+    products: items.map(item => ({
+      id: item.id,
+      name: item.name,
+      strength: item.strength,
+      quantity: item.qty,
+      unitPrice: item.price,
+      lineTotal: item.price * item.qty
+    })),
+    subtotal,
+    shipping: {
+      method: selectedShipping.label,
+      eta: selectedShipping.eta,
+      cost: shipping,
+      freeShippingApplied: subtotal >= 200
+    },
+    total,
+    payment: {
+      method: 'Bank Transfer',
+      accountName: BANK_ACCOUNT_NAME,
+      accountNumber: BANK_ACCOUNT_NUMBER,
+      reference: orderNumber
+    },
+    status: 'Awaiting Bank Transfer',
+    createdAt: new Date().toISOString()
+  };
+
+  localStorage.setItem('htxLastOrder', JSON.stringify(order));
+  document.querySelector('#checkoutForm')?.classList.add('hidden');
+  document.querySelector('#checkoutIntro')?.classList.add('hidden');
+  renderOrderConfirmation(order);
+  localStorage.removeItem('htxCart');
+  renderCart();
+}
+
+function renderOrderConfirmation(order) {
+  const box = document.querySelector('#orderConfirmation');
+  if (!box) return;
+
+  box.classList.remove('hidden');
+  box.innerHTML = `
+    <div class="confirmation-card">
+      <p class="eyebrow">Order Received</p>
+      <h1>Bank Transfer Payment</h1>
+      <p class="lead">Please use your order number as the payment reference. Your order will be processed once payment clears.</p>
+
+      <div class="bank-details-box">
+        <div><span>Order Number</span><b>${order.orderNumber}</b></div>
+        <div><span>Order Total</span><b>${money(order.total)}</b></div>
+        <div><span>Account Name</span><b>${order.payment.accountName}</b></div>
+        <div><span>Account Number</span><b>${order.payment.accountNumber}</b></div>
+        <div><span>Reference</span><b>${order.payment.reference}</b></div>
+      </div>
+
+      <button class="btn wide" type="button" data-copy-payment>Copy Bank Details</button>
+      <a class="btn ghost wide" href="mailto:${SUPPORT_EMAIL}?subject=Order ${order.orderNumber}&body=${encodeURIComponent(buildEmailBody(order))}">Email Order Details</a>
+      <a class="btn ghost wide" href="shop.html">Continue Shopping</a>
+    </div>
+  `;
+}
+
+function buildEmailBody(order) {
+  const lines = order.products.map(item => `- ${item.name} ${item.strength} x ${item.quantity}: ${money(item.lineTotal)}`).join('\n');
+  return `Order Number: ${order.orderNumber}\n\nCustomer:\n${order.customer.fullName}\n${order.customer.email}\n${order.customer.phone}\n${order.customer.address}\n\nProducts:\n${lines}\n\nSubtotal: ${money(order.subtotal)}\nShipping: ${order.shipping.freeShippingApplied ? 'Free Shipping' : `${order.shipping.method} - ${money(order.shipping.cost)}`}\nTotal: ${money(order.total)}\n\nBank Transfer Details:\nAccount Name: ${order.payment.accountName}\nAccount Number: ${order.payment.accountNumber}\nReference: ${order.payment.reference}`;
+}
+
+function copyPaymentDetails() {
+  const order = JSON.parse(localStorage.getItem('htxLastOrder') || 'null');
+  if (!order) return;
+  const details = `HTX Peptides NZ Bank Transfer\nOrder Number: ${order.orderNumber}\nAmount Due: ${money(order.total)}\nAccount Name: ${order.payment.accountName}\nAccount Number: ${order.payment.accountNumber}\nReference: ${order.payment.reference}`;
+  navigator.clipboard?.writeText(details).then(() => alert('Bank details copied.'));
 }
 
 function bindEvents() {
@@ -233,7 +380,6 @@ function bindEvents() {
     const addButton = event.target.closest('[data-add-product]');
     if (addButton) {
       event.preventDefault();
-      event.stopPropagation();
       addToCart(addButton.dataset.addProduct, 1);
       if (addButton.dataset.closeAfterAdd === 'true') closeModal();
       return;
@@ -265,25 +411,49 @@ function bindEvents() {
       closeModal();
       return;
     }
+
+    if (event.target.closest('[data-checkout]')) {
+      event.preventDefault();
+      goToCheckout();
+      return;
+    }
+
+    if (event.target.closest('[data-copy-payment]')) {
+      event.preventDefault();
+      copyPaymentDetails();
+    }
   });
 
   document.addEventListener('change', (event) => {
     const input = event.target.closest('[data-qty-input]');
     if (input) updateQty(input.dataset.qtyInput, input.value);
+
+    if (event.target.closest('input[name="shippingOption"]')) {
+      renderCheckoutSummary();
+    }
   });
+
+  document.addEventListener('input', (event) => {
+    if (event.target.closest('#checkoutForm')) renderCheckoutSummary();
+  });
+
+  const checkoutForm = document.querySelector('#checkoutForm');
+  if (checkoutForm) checkoutForm.addEventListener('submit', placeBankOrder);
 }
 
 function init() {
   renderProducts();
   renderCart();
+  renderCheckoutSummary();
   bindEvents();
 }
 
 window.addToCart = addToCart;
 window.openCart = openCart;
 window.closeCart = closeCart;
-window.checkoutWhatsApp = checkoutWhatsApp;
+window.goToCheckout = goToCheckout;
 window.viewProduct = viewProduct;
 window.closeModal = closeModal;
+window.placeBankOrder = placeBankOrder;
 
 document.addEventListener('DOMContentLoaded', init);

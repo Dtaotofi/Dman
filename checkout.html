@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>Checkout | HTX Peptides NZ</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="script.js"></script>
+</head>
+<body class="checkout-page exact-reference">
+  <div class="topbar exact-topbar">
+    <span>⚗ RESEARCH USE ONLY</span>
+    <span>NOT FOR HUMAN USE</span>
+    <span>🧪 LAB TESTED</span>
+    <span>🚚 FAST & DISCREET NZ SHIPPING</span>
+  </div>
+
+  <nav class="nav exact-nav">
+    <a href="index.html" class="logo exact-logo" aria-label="HTX Peptides NZ">
+      <img src="assets/htx-logo-transparent.png" alt="HTX Peptides NZ">
+    </a>
+    <div class="nav-links exact-nav-links">
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="index.html#faq">FAQ</a>
+      <a href="index.html#shipping">Shipping</a>
+      <a href="coa-testing.html">COA</a>
+      <a href="terms.html">Terms</a>
+      <a href="contact.html">Support</a>
+    </div>
+    <button class="cart-btn exact-cart" onclick="openCart()">Cart <span class="cart-count">0</span></button>
+  </nav>
+
+  <section class="page-hero" id="checkoutIntro">
+    <p class="eyebrow">Secure Checkout</p>
+    <h1>Bank Transfer Checkout</h1>
+    <p class="lead">Enter your details, choose shipping, then receive your order number and bank transfer reference.</p>
+  </section>
+
+  <main class="checkout-layout section">
+    <form id="checkoutForm" class="checkout-form-card">
+      <div class="free-shipping-banner">Free Shipping on Orders Over $200</div>
+      <h2>Contact & Shipping</h2>
+      <label>Full Name<input id="fullName" type="text" autocomplete="name" required></label>
+      <label>Email<input id="email" type="email" autocomplete="email" required></label>
+      <label>Phone Number<input id="phone" type="tel" autocomplete="tel" required></label>
+      <label>Shipping Address<textarea id="address" autocomplete="shipping street-address" required></textarea></label>
+
+      <h2>Shipping Method</h2>
+      <div class="shipping-options">
+        <label><input type="radio" name="shippingOption" value="standard" checked><span><b>Standard Shipping NZ</b><small>1-3 business days</small></span><strong>$7.99</strong></label>
+        <label><input type="radio" name="shippingOption" value="express"><span><b>Express Shipping NZ</b><small>1-2 business days</small></span><strong>$11.99</strong></label>
+        <label><input type="radio" name="shippingOption" value="rural"><span><b>Rural Delivery</b><small>2-5 business days</small></span><strong>$13.98</strong></label>
+      </div>
+
+      <h2>Payment Method</h2>
+      <div class="bank-method-box">
+        <b>Bank Transfer</b>
+        <p>Bank details will be shown after you place your order. Please use your order number as the reference.</p>
+      </div>
+
+      <button class="btn wide" type="submit">Place Order</button>
+    </form>
+
+    <aside class="checkout-summary-card">
+      <h2>Order Summary</h2>
+      <div id="checkoutSummary"></div>
+    </aside>
+
+    <section id="orderConfirmation" class="order-confirmation hidden"></section>
+  </main>
+
+  <aside class="cart-drawer">
+    <div class="cart-head"><h2>Your Cart</h2><button class="icon-btn" onclick="closeCart()">×</button></div>
+    <div id="cartItems" class="cart-items"></div>
+    <div class="cart-foot">
+      <div class="subtotal"><span>Subtotal</span><b id="cartSubtotal">$0.00 NZD</b></div>
+      <div class="free-shipping-note">Free Shipping on Orders Over $200</div>
+      <button class="btn wide" type="button" data-checkout>Proceed to Checkout</button>
+      <p class="muted">Checkout uses bank transfer payment details. No WhatsApp redirect.</p>
+    </div>
+  </aside>
+  <div id="productModal" class="modal"></div>
+
+  <footer class="footer exact-footer">
+    <img src="assets/htx-logo-transparent.png" alt="HTX Peptides NZ">
+    <p>Research Use Only • Not For Human Use • Lab Tested • Batch Verified</p>
+    <p><a href="mailto:support@htxpeptides.co.nz">support@htxpeptides.co.nz</a></p>
+  </footer>
+</body>
+</html>
