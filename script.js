@@ -1,119 +1,137 @@
 const PRODUCTS = [
-  {id:'reta10', name:'Retatrutide', strength:'10mg', price:149.99, category:'Metabolic Research', image:'assets/retatrutide-10mg.png'},
-  {id:'reta15', name:'Retatrutide', strength:'15mg', price:199.99, category:'Metabolic Research', image:'assets/retatrutide-15mg.png'},
-  {id:'reta20', name:'Retatrutide', strength:'20mg', price:249.99, category:'Metabolic Research', image:'assets/retatrutide-20mg.png'},
-  {id:'cjcipa10', name:'CJC-1295 N/D + Ipamorelin', strength:'10mg', price:119.99, category:'GH Research', image:'assets/cjc-ipa-10mg.png'},
-  {id:'bpctb20', name:'BPC-157 + TB-500', strength:'10mg + 10mg', price:119.99, category:'Recovery Research', image:'assets/bpc-tb-20mg.png'},
-  {id:'klow80', name:'KLOW', strength:'80mg', price:179.99, category:'Multi Peptide Blend', image:'assets/klow-80mg.png'},
-  {id:'bac3', name:'BAC Water', strength:'3ml', price:19.99, category:'Ancillary', image:'assets/bac-water-3ml.png'},
-  {id:'bac10', name:'BAC Water', strength:'10ml', price:29.99, category:'Ancillary', image:'assets/bac-water-10ml.png'},
-  {id:'mots10', name:'MOTS-C', strength:'10mg', price:99.99, category:'Cellular Research', image:'assets/mots-c-10mg.png'},
-  {id:'igf1', name:'IGF-1 LR3', strength:'1mg', price:119.99, category:'GH Research', image:'assets/igf-1-lr3-1mg.png'}
+  { id: 'reta10', name: 'Retatrutide', strength: '10mg', price: 149.99, category: 'Metabolic Research', image: 'assets/retatrutide-10mg.png' },
+  { id: 'reta15', name: 'Retatrutide', strength: '15mg', price: 199.99, category: 'Metabolic Research', image: 'assets/retatrutide-15mg.png' },
+  { id: 'reta20', name: 'Retatrutide', strength: '20mg', price: 249.99, category: 'Metabolic Research', image: 'assets/retatrutide-20mg.png' },
+  { id: 'cjcipa10', name: 'CJC-1295 N/D + Ipamorelin', strength: '10mg', price: 119.99, category: 'GH Research', image: 'assets/cjc-ipa-10mg.png' },
+  { id: 'bpctb20', name: 'BPC-157 + TB-500', strength: '10mg + 10mg', price: 119.99, category: 'Recovery Research', image: 'assets/bpc-tb-20mg.png' },
+  { id: 'klow80', name: 'KLOW', strength: '80mg', price: 179.99, category: 'Multi Peptide Blend', image: 'assets/klow-80mg.png' },
+  { id: 'bac3', name: 'BAC Water', strength: '3ml', price: 19.99, category: 'Ancillary', image: 'assets/bac-water-3ml.png' },
+  { id: 'bac10', name: 'BAC Water', strength: '10ml', price: 29.99, category: 'Ancillary', image: 'assets/bac-water-10ml.png' },
+  { id: 'mots10', name: 'MOTS-C', strength: '10mg', price: 99.99, category: 'Cellular Research', image: 'assets/mots-c-10mg.png' },
+  { id: 'igf1', name: 'IGF-1 LR3', strength: '1mg', price: 119.99, category: 'GH Research', image: 'assets/igf-1-lr3-1mg.png' }
 ];
 
 const WA_NUMBER = '64273211748';
-const money = n => `$${Number(n).toFixed(2)} NZD`;
-const getCart = () => JSON.parse(localStorage.getItem('htxCart') || '{}');
-const productById = id => PRODUCTS.find(p => p.id === id);
+const BANK_ACCOUNT_NAME = 'HTX Peptides NZ';
+const BANK_ACCOUNT_NUMBER = '06-0489-0153992-02';
 
-function setCart(cart){
+function money(value) {
+  return `$${Number(value).toFixed(2)} NZD`;
+}
+
+function getProduct(id) {
+  return PRODUCTS.find(product => product.id === id);
+}
+
+function getCart() {
+  try {
+    return JSON.parse(localStorage.getItem('htxCart') || '{}');
+  } catch {
+    return {};
+  }
+}
+
+function saveCart(cart) {
   localStorage.setItem('htxCart', JSON.stringify(cart));
-  updateCartUI();
+  renderCart();
 }
 
-function addToCart(id, qty = 1){
-  const product = productById(id);
-  if(!product) return;
-  const cart = getCart();
-  cart[id] = (cart[id] || 0) + Number(qty || 1);
-  setCart(cart);
-  openCart();
-}
-
-function removeFromCart(id){
-  const cart = getCart();
-  delete cart[id];
-  setCart(cart);
-}
-
-function updateQty(id, qty){
-  const cart = getCart();
-  qty = Number(qty);
-  if(qty <= 0) delete cart[id];
-  else cart[id] = qty;
-  setCart(cart);
-}
-
-function cartItems(){
+function cartItems() {
   const cart = getCart();
   return Object.entries(cart)
-    .map(([id, qty]) => ({...productById(id), qty}))
-    .filter(item => item.id);
+    .map(([id, qty]) => {
+      const product = getProduct(id);
+      if (!product) return null;
+      return { ...product, qty: Number(qty) || 0 };
+    })
+    .filter(item => item && item.qty > 0);
 }
 
-function cartTotal(){
+function cartTotal() {
   return cartItems().reduce((sum, item) => sum + item.price * item.qty, 0);
 }
 
-function updateCartUI(){
-  const count = cartItems().reduce((sum, item) => sum + item.qty, 0);
-  document.querySelectorAll('.cart-count').forEach(el => el.textContent = count);
+function addToCart(id, qty = 1) {
+  const product = getProduct(id);
+  if (!product) {
+    console.warn('Product not found:', id);
+    return;
+  }
 
-  const box = document.querySelector('#cartItems');
-  if(!box) return;
+  const cart = getCart();
+  cart[id] = (Number(cart[id]) || 0) + Number(qty || 1);
+  saveCart(cart);
+  openCart();
 
+  const count = document.querySelector('.cart-count');
+  if (count) {
+    count.animate([{ transform: 'scale(1)' }, { transform: 'scale(1.35)' }, { transform: 'scale(1)' }], {
+      duration: 280,
+      easing: 'ease-out'
+    });
+  }
+}
+
+function removeFromCart(id) {
+  const cart = getCart();
+  delete cart[id];
+  saveCart(cart);
+}
+
+function updateQty(id, qty) {
+  const cart = getCart();
+  const nextQty = Number(qty);
+  if (nextQty <= 0 || Number.isNaN(nextQty)) delete cart[id];
+  else cart[id] = nextQty;
+  saveCart(cart);
+}
+
+function renderCart() {
   const items = cartItems();
-  box.innerHTML = items.length ? items.map(item => `
-    <div class="cart-line">
-      <img src="${item.image}" alt="${item.name}">
-      <div>
-        <b>${item.name}</b>
-        <span>${item.strength} • ${money(item.price)}</span>
-        <div class="qty">
-          <button type="button" data-cart-qty="${item.id}" data-qty="${item.qty - 1}">−</button>
-          <input value="${item.qty}" data-cart-input="${item.id}">
-          <button type="button" data-cart-qty="${item.id}" data-qty="${item.qty + 1}">+</button>
+  const count = items.reduce((sum, item) => sum + item.qty, 0);
+
+  document.querySelectorAll('.cart-count').forEach(el => {
+    el.textContent = count;
+  });
+
+  const cartBox = document.querySelector('#cartItems');
+  if (cartBox) {
+    cartBox.innerHTML = items.length ? items.map(item => `
+      <div class="cart-line">
+        <img src="${item.image}" alt="${item.name}">
+        <div>
+          <b>${item.name}</b>
+          <span>${item.strength} • ${money(item.price)}</span>
+          <div class="qty">
+            <button type="button" class="qty-btn" data-qty-id="${item.id}" data-qty="${item.qty - 1}">−</button>
+            <input value="${item.qty}" inputmode="numeric" data-qty-input="${item.id}">
+            <button type="button" class="qty-btn" data-qty-id="${item.id}" data-qty="${item.qty + 1}">+</button>
+          </div>
         </div>
+        <button type="button" class="icon-btn" data-remove-id="${item.id}">×</button>
       </div>
-      <button type="button" class="icon-btn" data-remove="${item.id}">×</button>
-    </div>
-  `).join('') : '<p class="muted">Your cart is empty.</p>';
+    `).join('') : '<p class="muted">Your cart is empty.</p>';
+  }
 
   const subtotal = document.querySelector('#cartSubtotal');
-  if(subtotal) subtotal.textContent = money(cartTotal());
+  if (subtotal) subtotal.textContent = money(cartTotal());
 }
 
-function openCart(){
+function openCart() {
   document.body.classList.add('cart-open');
-  updateCartUI();
+  renderCart();
 }
 
-function closeCart(){
+function closeCart() {
   document.body.classList.remove('cart-open');
 }
 
-function checkoutWhatsApp(){
-  const items = cartItems();
-  if(!items.length) return alert('Your cart is empty.');
-
-  const paymentMethod = document.querySelector('#paymentMethod')?.value || 'Bank Transfer';
-  const orderRef = 'HTX-' + Date.now().toString().slice(-6);
-  const lines = items.map(item => `• ${item.name} ${item.strength} x ${item.qty} — ${money(item.price * item.qty)}`).join('\\n');
-
-  const paymentText = paymentMethod === 'Bank Transfer'
-    ? `\\n\\nPayment Method: Bank Transfer\\nReference: ${orderRef}\\n\\nBank Transfer Details:\\nAccount Name: HTX Peptides NZ\\nAccount Number: 06-0489-0153992-02\\nReference: ${orderRef}`
-    : `\\n\\nPayment Method: Card Payment Link\\nReference: ${orderRef}\\n\\nPlease send me a secure card payment link for this order.`;
-
-  const msg = `Hi HTX Peptides, I’d like to place an order:\\n${lines}\\n\\nSubtotal: ${money(cartTotal())}${paymentText}\\n\\nName:\\nDelivery address:`;
-  window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
-}
-
-function productCard(product){
+function productCard(product) {
   const home = document.body.classList.contains('home-page');
 
-  if(home){
+  if (home) {
     return `
-      <article class="premium-stock-card" data-cat="${product.category}">
+      <article class="premium-stock-card">
         <div class="premium-img">
           <img src="${product.image}" alt="${product.name} ${product.strength}">
         </div>
@@ -123,8 +141,8 @@ function productCard(product){
           <p>${product.strength} • Research Use Only</p>
           <b>${money(product.price)}</b>
           <div class="premium-actions">
-            <button type="button" class="btn ghost" data-view="${product.id}">View Product</button>
-            <button type="button" class="btn" data-add="${product.id}">Add To Cart</button>
+            <button type="button" class="btn ghost" data-view-product="${product.id}">View Product</button>
+            <button type="button" class="btn" data-add-product="${product.id}">Add To Cart</button>
           </div>
         </div>
       </article>
@@ -132,7 +150,7 @@ function productCard(product){
   }
 
   return `
-    <article class="product-card" data-cat="${product.category}">
+    <article class="product-card">
       <div class="product-img-wrap">
         <img src="${product.image}" alt="${product.name} ${product.strength}">
       </div>
@@ -142,44 +160,30 @@ function productCard(product){
         <p>${product.strength}</p>
         <b>${money(product.price)}</b>
         <div class="product-actions">
-          <button type="button" data-view="${product.id}" class="btn ghost">View Product</button>
-          <button type="button" data-add="${product.id}" class="btn">Add</button>
+          <button type="button" class="btn ghost" data-view-product="${product.id}">View Product</button>
+          <button type="button" class="btn" data-add-product="${product.id}">Add</button>
         </div>
       </div>
     </article>
   `;
 }
 
-function renderProducts(limit){
+function renderProducts(limit) {
   const grid = document.querySelector('#productGrid');
-  if(!grid) return;
-  const selected = PRODUCTS.slice(0, limit || PRODUCTS.length);
-  grid.innerHTML = selected.map(productCard).join('');
+  if (!grid) return;
+
+  const amount = Number(limit || document.body.dataset.limit || PRODUCTS.length);
+  grid.innerHTML = PRODUCTS.slice(0, amount).map(productCard).join('');
 }
 
-function filterProducts(){
-  const q = (document.querySelector('#searchInput')?.value || '').toLowerCase();
-  const cat = document.querySelector('#categoryFilter')?.value || 'all';
-  const grid = document.querySelector('#productGrid');
-  if(!grid) return;
-
-  const filtered = PRODUCTS.filter(product => {
-    const matchesCategory = cat === 'all' || product.category === cat;
-    const searchable = `${product.name} ${product.strength} ${product.category}`.toLowerCase();
-    return matchesCategory && searchable.includes(q);
-  });
-
-  grid.innerHTML = filtered.length ? filtered.map(productCard).join('') : '<p class="muted">No products found.</p>';
-}
-
-function viewProduct(id){
-  const product = productById(id);
+function viewProduct(id) {
+  const product = getProduct(id);
   const modal = document.querySelector('#productModal');
-  if(!product || !modal) return;
+  if (!product || !modal) return;
 
   modal.innerHTML = `
     <div class="modal-card">
-      <button class="modal-close" type="button" onclick="closeModal()">×</button>
+      <button class="modal-close" type="button" data-close-modal>×</button>
       <div class="modal-grid">
         <img src="${product.image}" alt="${product.name}">
         <div>
@@ -193,12 +197,7 @@ function viewProduct(id){
             <li>Research use only</li>
             <li>COA available on request</li>
           </ul>
-          <div class="qty big">
-            <button type="button" onclick="this.nextElementSibling.stepDown()">−</button>
-            <input id="modalQty" type="number" value="1" min="1">
-            <button type="button" onclick="this.previousElementSibling.stepUp()">+</button>
-          </div>
-          <button class="btn wide" type="button" onclick="addToCart('${product.id}', document.querySelector('#modalQty').value); closeModal();">Add to Cart</button>
+          <button class="btn wide" type="button" data-add-product="${product.id}" data-close-after-add="true">Add to Cart</button>
         </div>
       </div>
     </div>
@@ -206,58 +205,85 @@ function viewProduct(id){
   modal.classList.add('show');
 }
 
-function closeModal(){
+function closeModal() {
   document.querySelector('#productModal')?.classList.remove('show');
 }
 
-function init(){
-  renderProducts(Number(document.body.dataset.limit));
-  updateCartUI();
-  document.querySelector('#searchInput')?.addEventListener('input', filterProducts);
-  document.querySelector('#categoryFilter')?.addEventListener('change', filterProducts);
+function checkoutWhatsApp() {
+  const items = cartItems();
+  if (!items.length) {
+    alert('Your cart is empty.');
+    return;
+  }
 
-  document.addEventListener('click', event => {
-    const addBtn = event.target.closest('[data-add]');
-    if(addBtn){
+  const paymentMethod = document.querySelector('#paymentMethod')?.value || 'Bank Transfer';
+  const orderRef = 'HTX-' + Date.now().toString().slice(-6);
+  const lines = items.map(item => `• ${item.name} ${item.strength} x ${item.qty} — ${money(item.price * item.qty)}`).join('\\n');
+
+  const paymentText = paymentMethod === 'Bank Transfer'
+    ? `\\n\\nPayment Method: Bank Transfer\\nAccount Name: ${BANK_ACCOUNT_NAME}\\nAccount Number: ${BANK_ACCOUNT_NUMBER}\\nReference: ${orderRef}`
+    : `\\n\\nPayment Method: Card Payment Link\\nReference: ${orderRef}\\nPlease send me a secure card payment link for this order.`;
+
+  const message = `Hi HTX Peptides, I would like to place an order:\\n${lines}\\n\\nSubtotal: ${money(cartTotal())}${paymentText}\\n\\nName:\\nDelivery address:`;
+  window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(message)}`, '_blank');
+}
+
+function bindEvents() {
+  document.addEventListener('click', (event) => {
+    const addButton = event.target.closest('[data-add-product]');
+    if (addButton) {
       event.preventDefault();
-      addToCart(addBtn.dataset.add);
+      event.stopPropagation();
+      addToCart(addButton.dataset.addProduct, 1);
+      if (addButton.dataset.closeAfterAdd === 'true') closeModal();
       return;
     }
 
-    const viewBtn = event.target.closest('[data-view]');
-    if(viewBtn){
+    const viewButton = event.target.closest('[data-view-product]');
+    if (viewButton) {
       event.preventDefault();
-      viewProduct(viewBtn.dataset.view);
+      viewProduct(viewButton.dataset.viewProduct);
       return;
     }
 
-    const removeBtn = event.target.closest('[data-remove]');
-    if(removeBtn){
+    const removeButton = event.target.closest('[data-remove-id]');
+    if (removeButton) {
       event.preventDefault();
-      removeFromCart(removeBtn.dataset.remove);
+      removeFromCart(removeButton.dataset.removeId);
       return;
     }
 
-    const qtyBtn = event.target.closest('[data-cart-qty]');
-    if(qtyBtn){
+    const qtyButton = event.target.closest('[data-qty-id]');
+    if (qtyButton) {
       event.preventDefault();
-      updateQty(qtyBtn.dataset.cartQty, qtyBtn.dataset.qty);
+      updateQty(qtyButton.dataset.qtyId, qtyButton.dataset.qty);
+      return;
+    }
+
+    if (event.target.closest('[data-close-modal]')) {
+      event.preventDefault();
+      closeModal();
+      return;
     }
   });
 
-  document.addEventListener('change', event => {
-    const input = event.target.closest('[data-cart-input]');
-    if(input) updateQty(input.dataset.cartInput, input.value);
+  document.addEventListener('change', (event) => {
+    const input = event.target.closest('[data-qty-input]');
+    if (input) updateQty(input.dataset.qtyInput, input.value);
   });
 }
 
+function init() {
+  renderProducts();
+  renderCart();
+  bindEvents();
+}
+
 window.addToCart = addToCart;
-window.viewProduct = viewProduct;
 window.openCart = openCart;
 window.closeCart = closeCart;
 window.checkoutWhatsApp = checkoutWhatsApp;
+window.viewProduct = viewProduct;
 window.closeModal = closeModal;
-window.updateQty = updateQty;
-window.removeFromCart = removeFromCart;
 
 document.addEventListener('DOMContentLoaded', init);

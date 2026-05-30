@@ -1624,3 +1624,113 @@ button,[data-add],[data-view]{
     grid-template-columns:1fr !important;
   }
 }
+
+
+/* === FINAL CART + DOUBLE LOGO FIX === */
+
+/* Double logo size */
+.logo img,
+.exact-logo img,
+.exact-reference .logo img,
+.exact-reference .exact-logo img{
+  width: 390px !important;
+  max-height: 175px !important;
+  object-fit: contain !important;
+  opacity: 1 !important;
+  filter: drop-shadow(0 0 34px rgba(22,141,255,.62)) drop-shadow(0 16px 30px rgba(0,0,0,.65)) !important;
+}
+
+.nav,
+.exact-reference .exact-nav{
+  min-height: 180px !important;
+  grid-template-columns: 430px 1fr 180px !important;
+}
+
+/* Make add-to-cart buttons definitely clickable */
+[data-add-product],
+[data-view-product],
+.cart-btn,
+.btn,
+button{
+  pointer-events: auto !important;
+  cursor: pointer !important;
+  position: relative;
+  z-index: 25;
+}
+
+/* Prevent decorative overlays/backgrounds from stealing clicks */
+.hero::before,
+.hero::after,
+.exact-hero::before,
+.exact-hero::after,
+.glow{
+  pointer-events: none !important;
+}
+
+/* Cart drawer open state */
+.cart-drawer{
+  z-index: 999999 !important;
+  transition: transform .25s ease !important;
+}
+
+body.cart-open .cart-drawer,
+.cart-open .cart-drawer{
+  transform: translateX(0) !important;
+}
+
+/* Cart line polish */
+.cart-line{
+  display: grid !important;
+  grid-template-columns: 72px 1fr 36px !important;
+  gap: 12px !important;
+  align-items: center !important;
+}
+
+.cart-line img{
+  width: 68px !important;
+  height: 68px !important;
+  object-fit: contain !important;
+}
+
+.qty input{
+  color: #fff !important;
+  background: #02060b !important;
+}
+
+/* Keep premium stock layout */
+.exact-reference #productGrid.exact-stock-grid,
+.exact-reference .exact-stock-grid{
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+}
+
+@media(max-width: 1250px){
+  .logo img,
+  .exact-logo img,
+  .exact-reference .logo img,
+  .exact-reference .exact-logo img{
+    width: 260px !important;
+    max-height: 120px !important;
+  }
+
+  .nav,
+  .exact-reference .exact-nav{
+    min-height: 130px !important;
+    grid-template-columns: 280px 1fr 170px !important;
+  }
+}
+
+@media(max-width: 900px){
+  .logo img,
+  .exact-logo img,
+  .exact-reference .logo img,
+  .exact-reference .exact-logo img{
+    width: 210px !important;
+    max-height: 96px !important;
+  }
+
+  .nav,
+  .exact-reference .exact-nav{
+    min-height: 96px !important;
+    grid-template-columns: 1fr auto !important;
+  }
+}
