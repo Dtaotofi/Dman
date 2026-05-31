@@ -69,8 +69,21 @@ function addToCart(id, qty = 1) {
   const product = getProduct(id);
   if (!product) return;
 
+  if (product.stock <= 0) {
+    alert('This product is currently sold out.');
+    return;
+  }
+
   const cart = getCart();
-  cart[id] = (Number(cart[id]) || 0) + Number(qty || 1);
+  const currentQty = Number(cart[id]) || 0;
+  const requestedQty = currentQty + Number(qty || 1);
+
+  if (requestedQty > product.stock) {
+    alert(`Only ${product.stock} available in stock.`);
+    return;
+  }
+
+  cart[id] = requestedQty;
   saveCart(cart);
   openCart();
 
@@ -89,11 +102,26 @@ function removeFromCart(id) {
 }
 
 function updateQty(id, qty) {
+  const product = getProduct(id);
+  if (!product) return;
+
   const cart = getCart();
   const nextQty = Number(qty);
-  if (nextQty <= 0 || Number.isNaN(nextQty)) delete cart[id];
-  else cart[id] = nextQty;
+
+  if (nextQty <= 0 || Number.isNaN(nextQty)) {
+    delete cart[id];
+  } else if (product.stock <= 0) {
+    alert('This product is currently sold out.');
+    delete cart[id];
+  } else if (nextQty > product.stock) {
+    alert(`Only ${product.stock} available in stock.`);
+    cart[id] = product.stock;
+  } else {
+    cart[id] = nextQty;
+  }
+
   saveCart(cart);
+}
 }
 
 function renderCart() {
