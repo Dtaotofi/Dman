@@ -357,10 +357,11 @@ function renderOrderConfirmation(order) {
         <div><span>Reference</span><b>${order.payment.reference}</b></div>
       </div>
 
-      <button class="btn wide" type="button" data-copy-payment>Copy Bank Details</button>
-      <a class="btn ghost wide" href="mailto:${SUPPORT_EMAIL}?subject=Order ${order.orderNumber}&body=${encodeURIComponent(buildEmailBody(order))}">Email Order Details</a>
-      <a class="btn ghost wide" href="shop.html">Continue Shopping</a>
-    </div>
+      <div class="confirmation-actions">
+  <button class="btn wide" type="button" data-copy-payment>Copy Bank Details</button>
+  <a class="btn ghost wide" href="mailto:${SUPPORT_EMAIL}?subject=Order ${order.orderNumber}&body=${encodeURIComponent(buildEmailBody(order))}">Email Order Details</a>
+  <a class="btn ghost wide" href="shop.html">Continue Shopping</a>
+</div>
   `;
 }
 
