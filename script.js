@@ -332,8 +332,10 @@ function placeBankOrder(event) {
 
   localStorage.setItem('htxLastOrder', JSON.stringify(order));
   document.querySelector('#checkoutForm')?.classList.add('hidden');
-  document.querySelector('#checkoutIntro')?.classList.add('hidden');
-  renderOrderConfirmation(order);
+document.querySelector('#checkoutIntro')?.classList.add('hidden');
+document.querySelector('.checkout-summary-card')?.classList.add('hidden');
+
+renderOrderConfirmation(order);
   localStorage.removeItem('htxCart');
   renderCart();
 }
