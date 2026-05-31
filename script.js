@@ -6,8 +6,8 @@ const PRODUCTS = [
   { id: 'bpctb20', name: 'BPC-157 + TB-500 Blend', strength: '20mg', price: 150, stock: 16, category: 'Recovery Research', image: 'assets/bpc-tb-20mg.png' },
   { id: 'klow80', name: 'KLOW', strength: '80mg', price: 200, stock: 20, category: 'Multi Peptide Blend', image: 'assets/klow-80mg.png' },
   { id: 'igf1lr3', name: 'IGF-1 LR3', strength: '1mg', price: 150, stock: 10, category: 'GH Research', image: 'assets/igf-1-lr3-1mg.png' },
-  { id: 'bac3', name: 'BAC Water', strength: '3ml', price: 10, stock: 30, category: 'Ancillary', image: 'assets/bac-water-3ml.png' },
-  { id: 'bac10', name: 'BAC Water', strength: '10ml', price: 20, stock: 30, category: 'Ancillary', image: 'assets/bac-water-10ml.png' }
+  { id: 'bac3', name: 'BAC Water', strength: '3ml', price: 20, stock: 30, category: 'Ancillary', image: 'assets/bac-water-3ml.png' },
+  { id: 'bac10', name: 'BAC Water', strength: '10ml', price: 30, stock: 30, category: 'Ancillary', image: 'assets/bac-water-10ml.png' }
 ];
 
 const BANK_ACCOUNT_NAME = 'HTX Peptides NZ';
