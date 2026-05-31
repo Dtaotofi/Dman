@@ -229,7 +229,6 @@ ${product.stock > 0
   }
 </div>
         </div>
-      </div>
     </article>
   `;
 }
