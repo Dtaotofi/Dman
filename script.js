@@ -44,15 +44,16 @@ function saveCart(cart) {
 
 function cartItems() {
   const cart = getCart();
+
   return Object.entries(cart)
     .map(([id, qty]) => {
       const product = getProduct(id);
       if (!product) return null;
-      if (product.stock <= 0) {
-  alert('This product is currently sold out.');
-  return;
-}
-      return { ...product, qty: Number(qty) || 0 };
+
+      return {
+        ...product,
+        qty: Number(qty) || 0
+      };
     })
     .filter(item => item && item.qty > 0);
 }
@@ -206,11 +207,27 @@ ${product.stock > 0
         <small>${product.category}</small>
         <h3>${product.name}</h3>
         <p>${product.strength} • Research Use Only</p>
-<p class="stock-count">In Stock: ${product.stock}</p>
+${product.stock > 0
+  ? `<p class="stock-count">In Stock: ${product.stock}</p>`
+  : `<p class="sold-out-label">SOLD OUT</p>`
+}
+
 <b>${money(product.price)}</b>
-        <div class="product-actions">
-          <button type="button" class="btn ghost" data-view-product="${product.id}">View Product</button>
-          <button type="button" class="btn" data-add-product="${product.id}">Add</button>
+
+<div class="product-actions">
+  <button type="button" class="btn ghost" data-view-product="${product.id}">
+    View Product
+  </button>
+
+  ${product.stock > 0
+    ? `<button type="button" class="btn" data-add-product="${product.id}">
+         Add
+       </button>`
+    : `<button type="button" class="sold-out-btn" disabled>
+         SOLD OUT
+       </button>`
+  }
+</div>
         </div>
       </div>
     </article>
