@@ -1854,53 +1854,33 @@ img { max-width: 100%; }
   .shipping-options label{grid-template-columns:auto 1fr;}
   .shipping-options strong{grid-column:2;}
   .bottom-trust,.recommendation-grid{grid-template-columns:1fr !important;}
-  /* ===== CHECKOUT CONFIRMATION FIX ===== */
 
-.confirmation-actions{
-  display:flex;
-  flex-direction:column;
-  gap:12px;
-  margin-top:20px;
+  /* === FIX CHECKOUT CONFIRMATION BUTTONS === */
+
+.order-confirmation .confirmation-card {
+  max-width: 760px !important;
+  margin: 0 auto !important;
+  padding: 32px !important;
 }
 
-.confirmation-actions .btn{
-  width:100%;
-  margin:0 !important;
-  min-height:52px;
+.order-confirmation .confirmation-actions {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 14px !important;
+  margin-top: 28px !important;
 }
 
-.confirmation-card{
-  max-width:760px;
-  margin:0 auto;
+.order-confirmation .confirmation-actions .btn {
+  width: 100% !important;
+  height: 54px !important;
+  min-height: 54px !important;
+  margin: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-sizing: border-box !important;
 }
 
-.bank-details-box{
-  margin:24px 0;
-}
-
-.bank-details-box div{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:14px 0;
-}
-
-.bank-details-box span{
-  color:#aab3c2;
-}
-
-.bank-details-box b{
-  color:#fff;
-  font-weight:800;
-}
-
-@media(max-width:560px){
-  .confirmation-card{
-    padding:18px;
-  }
-
-  .confirmation-actions{
-    gap:10px;
-  }
-}
+.order-confirmation .bank-details-box {
+  margin-bottom: 28px !important;
 }
