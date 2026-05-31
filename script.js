@@ -354,7 +354,7 @@ function placeBankOrder(event) {
   localStorage.setItem('htxLastOrder', JSON.stringify(order));
 
 emailjs.send(
-  "service_ad3j3b9",
+  "service_d1m7eei",
   "template_jcriw1i",
   {
     order_id: order.orderNumber,
