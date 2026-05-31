@@ -122,7 +122,6 @@ function updateQty(id, qty) {
 
   saveCart(cart);
 }
-}
 
 function renderCart() {
   const items = cartItems();
