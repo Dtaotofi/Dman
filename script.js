@@ -378,7 +378,7 @@ emailjs.send(
   console.error("Email failed", error);
 });
 emailjs.send(
-  "service_ad3j3b9",
+  "service_d1m7eei",
   "template_u8hk7us",
   {
     order_id: order.orderNumber,
