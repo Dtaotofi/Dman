@@ -2106,5 +2106,27 @@ body.cart-open .cart-drawer,
   border-bottom:1px solid rgba(90,162,255,.35);
   box-shadow:0 0 22px rgba(22,141,255,.25);
 }
+  .sold-out-label{
+    display:inline-block;
+    background:#ff3b30;
+    color:#fff;
+    padding:6px 12px;
+    border-radius:999px;
+    font-size:12px;
+    font-weight:700;
+    margin:8px 0;
+}
+
+.sold-out-btn{
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:12px;
+    background:#444;
+    color:#fff;
+    font-weight:700;
+    cursor:not-allowed;
+    opacity:.8;
+}
 
 
