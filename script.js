@@ -144,8 +144,9 @@ function productCard(product) {
         <div class="premium-info">
           <small>${product.category}</small>
           <h3>${product.name}</h3>
-          <p>${product.strength} • Research Use Only</p>
-          <b>${money(product.price)}</b>
+         <p>${product.strength} • Research Use Only</p>
+<p class="stock-count">In Stock: ${product.stock}</p>
+<b>${money(product.price)}</b>
           <div class="premium-actions">
             <button type="button" class="btn ghost" data-view-product="${product.id}">View Product</button>
             <button type="button" class="btn" data-add-product="${product.id}">Add To Cart</button>
@@ -163,8 +164,9 @@ function productCard(product) {
       <div class="product-info">
         <small>${product.category}</small>
         <h3>${product.name}</h3>
-        <p>${product.strength}</p>
-        <b>${money(product.price)}</b>
+        <p>${product.strength} • Research Use Only</p>
+<p class="stock-count">In Stock: ${product.stock}</p>
+<b>${money(product.price)}</b>
         <div class="product-actions">
           <button type="button" class="btn ghost" data-view-product="${product.id}">View Product</button>
           <button type="button" class="btn" data-add-product="${product.id}">Add</button>
