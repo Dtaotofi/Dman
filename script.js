@@ -343,11 +343,18 @@ function renderOrderConfirmation(order) {
   if (!box) return;
 
   box.classList.remove('hidden');
+
   box.innerHTML = `
     <div class="confirmation-card">
+
       <p class="eyebrow">Order Received</p>
+
       <h1>Bank Transfer Payment</h1>
-      <p class="lead">Please use your order number as the payment reference. Your order will be processed once payment clears.</p>
+
+      <p class="lead">
+        Please use your order number as the payment reference.
+        Your order will be processed once payment clears.
+      </p>
 
       <div class="bank-details-box">
         <div><span>Order Number</span><b>${order.orderNumber}</b></div>
@@ -357,13 +364,26 @@ function renderOrderConfirmation(order) {
         <div><span>Reference</span><b>${order.payment.reference}</b></div>
       </div>
 
-    <div class="confirmation-actions">
-  <button class="btn wide" type="button" data-copy-payment>Copy Bank Details</button>
-  <a class="btn ghost wide" href="mailto:${SUPPORT_EMAIL}?subject=Order ${order.orderNumber}&body=${encodeURIComponent(buildEmailBody(order))}">Email Order Details</a>
-  <a class="btn ghost wide" href="shop.html">Continue Shopping</a>
-</div>
-}
+      <div class="confirmation-actions">
 
+        <button class="btn wide" type="button" data-copy-payment">
+          Copy Bank Details
+        </button>
+
+        <a class="btn ghost wide"
+           href="mailto:${SUPPORT_EMAIL}?subject=Order ${order.orderNumber}&body=${encodeURIComponent(buildEmailBody(order))}">
+          Email Order Details
+        </a>
+
+        <a class="btn ghost wide" href="shop.html">
+          Continue Shopping
+        </a>
+
+      </div>
+
+    </div>
+  `;
+}
 function buildEmailBody(order) {
   const lines = order.products.map(item => `- ${item.name} ${item.strength} x ${item.quantity}: ${money(item.lineTotal)}`).join('\n');
   return `Order Number: ${order.orderNumber}\n\nCustomer:\n${order.customer.fullName}\n${order.customer.email}\n${order.customer.phone}\n${order.customer.address}\n\nProducts:\n${lines}\n\nSubtotal: ${money(order.subtotal)}\nShipping: ${order.shipping.freeShippingApplied ? 'Free Shipping' : `${order.shipping.method} - ${money(order.shipping.cost)}`}\nTotal: ${money(order.total)}\n\nBank Transfer Details:\nAccount Name: ${order.payment.accountName}\nAccount Number: ${order.payment.accountNumber}\nReference: ${order.payment.reference}`;
