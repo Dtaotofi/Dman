@@ -345,7 +345,7 @@ function placeBankOrder(event) {
       method: 'Bank Transfer',
       accountName: BANK_ACCOUNT_NAME,
       accountNumber: BANK_ACCOUNT_NUMBER,
-      reference: orderNumber
+      reference: orderNumber.slice(-8)
     },
     status: 'Awaiting Bank Transfer',
     createdAt: new Date().toISOString()
@@ -421,7 +421,7 @@ function renderOrderConfirmation(order) {
       <p class="eyebrow">Order Received</p>
       <h1>Bank Transfer Payment</h1>
       <p class="lead">
-        Please use your order number as the payment reference.
+        Please use the last 8 digits of your Order Number as the payment reference when making your bank transfer.
         Your order will be processed once payment clears.
       </p>
 
