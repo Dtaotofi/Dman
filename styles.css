@@ -2096,12 +2096,15 @@ body.cart-open .cart-drawer,
   margin: 8px 0;
 }
   .shipping-notice{
-  background:linear-gradient(135deg,#0d55c7,#1682ff);
+  background:linear-gradient(135deg,#071426,#0d55c7,#1682ff);
   color:#fff;
   text-align:center;
-  font-weight:700;
-  padding:12px;
+  font-weight:800;
+  padding:10px 16px;
   font-size:14px;
-  border-bottom:1px solid rgba(255,255,255,.15);
+  letter-spacing:.03em;
+  border-bottom:1px solid rgba(90,162,255,.35);
+  box-shadow:0 0 22px rgba(22,141,255,.25);
 }
-}
+
+
