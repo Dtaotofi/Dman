@@ -230,13 +230,20 @@ function viewProduct(id) {
           <h2>${product.name}</h2>
           <h3>${product.strength}</h3>
           <p class="price">${money(product.price)}</p>
+          ${product.stock > 0
+  ? `<p class="stock-count">In Stock: ${product.stock}</p>`
+  : `<p class="sold-out-label">SOLD OUT</p>`
+}
           <p>Premium lyophilized peptide product supplied for research purposes only. Not for human use.</p>
           <ul class="clean-list">
             <li>Storage: Refrigerate at 2°C–8°C</li>
             <li>Research use only</li>
             <li>COA available on request</li>
           </ul>
-          <button class="btn wide" type="button" data-add-product="${product.id}" data-close-after-add="true">Add to Cart</button>
+          ${product.stock > 0
+  ? `<button class="btn wide" type="button" data-add-product="${product.id}" data-close-after-add="true">Add to Cart</button>`
+  : `<button class="sold-out-btn wide" type="button" disabled>SOLD OUT</button>`
+}
         </div>
       </div>
     </div>
