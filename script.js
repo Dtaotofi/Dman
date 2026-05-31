@@ -377,7 +377,30 @@ emailjs.send(
 .catch(function(error) {
   console.error("Email failed", error);
 });
-
+emailjs.send(
+  "service_ad3j3b9",
+  "template_u8hk7us",
+  {
+    order_id: order.orderNumber,
+    customer_name: order.customer.fullName,
+    email: order.customer.email,
+    phone: order.customer.phone,
+    address: order.customer.address,
+    shipping_method: order.shipping.freeShippingApplied
+      ? "Free Shipping"
+      : `${order.shipping.method} - ${money(order.shipping.cost)}`,
+    orders: order.products
+      .map(item => `${item.name} ${item.strength} x ${item.quantity}`)
+      .join("\n"),
+    total: money(order.total)
+  }
+)
+.then(function(response) {
+  console.log("Admin email sent", response);
+})
+.catch(function(error) {
+  console.error("Admin email failed", error);
+});
 document.querySelector('#checkoutForm')?.classList.add('hidden');
 document.querySelector('#checkoutIntro')?.classList.add('hidden');
 document.querySelector('.checkout-summary-card')?.classList.add('hidden');
