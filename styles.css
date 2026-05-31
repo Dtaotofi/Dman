@@ -2128,5 +2128,23 @@ body.cart-open .cart-drawer,
     cursor:not-allowed;
     opacity:.8;
 }
+.product-modal,
+.modal-content {
+  max-height: 90vh;
+  overflow-y: auto;
+}
 
+.modal-content {
+  width: 92%;
+  max-width: 520px;
+  margin: 20px auto;
+  padding: 20px;
+}
+
+.product-modal img,
+.modal-content img {
+  max-height: 260px;
+  width: 100%;
+  object-fit: contain;
+}
 
