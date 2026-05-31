@@ -1,21 +1,22 @@
 const PRODUCTS = [
-  { id: 'reta10', name: 'Retatrutide', strength: '10mg', price: 149.99, category: 'Metabolic Research', image: 'assets/retatrutide-10mg.png' },
-  { id: 'reta15', name: 'Retatrutide', strength: '15mg', price: 199.99, category: 'Metabolic Research', image: 'assets/retatrutide-15mg.png' },
-  { id: 'reta20', name: 'Retatrutide', strength: '20mg', price: 249.99, category: 'Metabolic Research', image: 'assets/retatrutide-20mg.png' },
-  { id: 'cjcipa10', name: 'CJC-1295 + Ipamorelin Blend', strength: '10mg', price: 119.99, category: 'GH Research', image: 'assets/cjc-ipa-10mg.png' },
-  { id: 'bpctb20', name: 'BPC-157 + TB-500 Blend', strength: '20mg', price: 119.99, category: 'Recovery Research', image: 'assets/bpc-tb-20mg.png' },
-  { id: 'klow80', name: 'KLOW', strength: '80mg', price: 179.99, category: 'Multi Peptide Blend', image: 'assets/klow-80mg.png' },
-  { id: 'bac3', name: 'BAC Water', strength: '3ml', price: 19.99, category: 'Ancillary', image: 'assets/bac-water-3ml.png' },
-  { id: 'bac10', name: 'BAC Water', strength: '10ml', price: 29.99, category: 'Ancillary', image: 'assets/bac-water-10ml.png' }
+  { id: 'reta10', name: 'Retatrutide', strength: '10mg', price: 100, category: 'Metabolic Research', image: 'assets/retatrutide-10mg.png' },
+  { id: 'reta15', name: 'Retatrutide', strength: '15mg', price: 150, category: 'Metabolic Research', image: 'assets/retatrutide-15mg.png' },
+  { id: 'reta20', name: 'Retatrutide', strength: '20mg', price: 180, category: 'Metabolic Research', image: 'assets/retatrutide-20mg.png' },
+  { id: 'cjcipa10', name: 'CJC-1295 + Ipamorelin Blend', strength: '10mg', price: 100, category: 'GH Research', image: 'assets/cjc-ipa-10mg.png' },
+  { id: 'bpctb20', name: 'BPC-157 + TB-500 Blend', strength: '20mg', price: 150, category: 'Recovery Research', image: 'assets/bpc-tb-20mg.png' },
+  { id: 'klow80', name: 'KLOW', strength: '80mg', price: 200, category: 'Multi Peptide Blend', image: 'assets/klow-80mg.png' },
+  { id: 'IGF-1 LR3', name: 'IGF-1 LR3', strength: '1mg', price: 150, category: 'GH Research', image: 'assets/klow-80mg.png' },
+  { id: 'bac3', name: 'BAC Water', strength: '3ml', price: 10, category: 'Ancillary', image: 'assets/bac-water-3ml.png' },
+  { id: 'bac10', name: 'BAC Water', strength: '10ml', price: 20, category: 'Ancillary', image: 'assets/bac-water-10ml.png' }
 ];
 
 const BANK_ACCOUNT_NAME = 'HTX Peptides NZ';
 const BANK_ACCOUNT_NUMBER = '04-2021-0311907-15';
 const SUPPORT_EMAIL = 'support@htxpeptides.co.nz';
 const SHIPPING_OPTIONS = {
-  standard: { label: 'Standard Shipping NZ', price: 7.99, eta: '1-3 business days' },
-  express: { label: 'Express Shipping NZ', price: 11.99, eta: '1-2 business days' },
-  rural: { label: 'Rural Delivery', price: 13.98, eta: '2-5 business days' }
+  standard: { label: 'Standard Shipping NZ', price: 8, eta: '1-3 business days' },
+  express: { label: 'Express Shipping NZ', price: 12, eta: '1-2 business days' },
+  rural: { label: 'Rural Delivery', price: 15, eta: '2-5 business days' }
 };
 
 function money(value) {
