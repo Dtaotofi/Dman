@@ -1855,13 +1855,8 @@ img { max-width: 100%; }
   .shipping-options strong{grid-column:2;}
   .bottom-trust,.recommendation-grid{grid-template-columns:1fr !important;}
 
-  /* === FIX CHECKOUT CONFIRMATION BUTTONS === */
-
-.order-confirmation .confirmation-card {
-  max-width: 760px !important;
-  margin: 0 auto !important;
-  padding: 32px !important;
-}
+ }
+/* === FIX CHECKOUT CONFIRMATION BUTTONS === */
 
 .order-confirmation .confirmation-actions {
   display: grid !important;
@@ -1879,6 +1874,12 @@ img { max-width: 100%; }
   align-items: center !important;
   justify-content: center !important;
   box-sizing: border-box !important;
+}
+
+.order-confirmation .confirmation-card {
+  max-width: 760px !important;
+  margin: 0 auto !important;
+  padding: 32px !important;
 }
 
 .order-confirmation .bank-details-box {
