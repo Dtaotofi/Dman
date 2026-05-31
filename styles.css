@@ -2095,4 +2095,13 @@ body.cart-open .cart-drawer,
   font-weight: 600;
   margin: 8px 0;
 }
+  .shipping-notice{
+  background:linear-gradient(135deg,#0d55c7,#1682ff);
+  color:#fff;
+  text-align:center;
+  font-weight:700;
+  padding:12px;
+  font-size:14px;
+  border-bottom:1px solid rgba(255,255,255,.15);
+}
 }
