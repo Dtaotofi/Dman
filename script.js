@@ -352,13 +352,33 @@ function placeBankOrder(event) {
   };
 
   localStorage.setItem('htxLastOrder', JSON.stringify(order));
-  document.querySelector('#checkoutForm')?.classList.add('hidden');
-  document.querySelector('#checkoutIntro')?.classList.add('hidden');
-  document.querySelector('.checkout-summary-card')?.classList.add('hidden');
 
-  renderOrderConfirmation(order);
-  localStorage.removeItem('htxCart');
-  renderCart();
+emailjs.send(
+  "service_ad3j3b9",
+  "template_jcriw1i",
+  {
+    order_id: order.orderNumber,
+    customer_name: order.customer.fullName,
+    email: order.customer.email,
+    phone: order.customer.phone,
+    address: order.customer.address,
+    total: money(order.total)
+  }
+)
+.then(function(response) {
+  console.log("Email sent successfully", response);
+})
+.catch(function(error) {
+  console.error("Email failed", error);
+});
+
+document.querySelector('#checkoutForm')?.classList.add('hidden');
+document.querySelector('#checkoutIntro')?.classList.add('hidden');
+document.querySelector('.checkout-summary-card')?.classList.add('hidden');
+
+renderOrderConfirmation(order);
+localStorage.removeItem('htxCart');
+renderCart();
 }
 
 function renderOrderConfirmation(order) {
