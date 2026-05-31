@@ -1,1 +1,1 @@
-Upload all files/folders to GitHub Pages. Open index.html. Cart uses localStorage and checkout opens WhatsApp to +64273211748.
+HTX Peptides NZ website. Upload all files in this folder to the GitHub repository root.

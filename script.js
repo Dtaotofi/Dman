@@ -5,7 +5,7 @@ const PRODUCTS = [
   { id: 'cjcipa10', name: 'CJC-1295 + Ipamorelin Blend', strength: '10mg', price: 100, category: 'GH Research', image: 'assets/cjc-ipa-10mg.png' },
   { id: 'bpctb20', name: 'BPC-157 + TB-500 Blend', strength: '20mg', price: 150, category: 'Recovery Research', image: 'assets/bpc-tb-20mg.png' },
   { id: 'klow80', name: 'KLOW', strength: '80mg', price: 200, category: 'Multi Peptide Blend', image: 'assets/klow-80mg.png' },
-  { id: 'IGF-1 LR3', name: 'IGF-1 LR3', strength: '1mg', price: 150, category: 'GH Research', image: 'assets/igf-1-lr3-1mg.png' },
+  { id: 'igf1lr3', name: 'IGF-1 LR3', strength: '1mg', price: 150, category: 'GH Research', image: 'assets/igf-1-lr3-1mg.png' },
   { id: 'bac3', name: 'BAC Water', strength: '3ml', price: 10, category: 'Ancillary', image: 'assets/bac-water-3ml.png' },
   { id: 'bac10', name: 'BAC Water', strength: '10ml', price: 20, category: 'Ancillary', image: 'assets/bac-water-10ml.png' }
 ];
@@ -13,6 +13,7 @@ const PRODUCTS = [
 const BANK_ACCOUNT_NAME = 'HTX Peptides NZ';
 const BANK_ACCOUNT_NUMBER = '04-2021-0311907-15';
 const SUPPORT_EMAIL = 'support@htxpeptides.co.nz';
+const ORDER_EMAIL = 'orders@htxpeptides.co.nz';
 const SHIPPING_OPTIONS = {
   standard: { label: 'Standard Shipping NZ', price: 8, eta: '1-3 business days' },
   express: { label: 'Express Shipping NZ', price: 12, eta: '1-2 business days' },
@@ -38,6 +39,7 @@ function getCart() {
 function saveCart(cart) {
   localStorage.setItem('htxCart', JSON.stringify(cart));
   renderCart();
+  renderCheckoutSummary();
 }
 
 function cartItems() {
@@ -69,10 +71,10 @@ function addToCart(id, qty = 1) {
   openCart();
 
   document.querySelectorAll('.cart-count').forEach(count => {
-    count.animate([{ transform: 'scale(1)' }, { transform: 'scale(1.35)' }, { transform: 'scale(1)' }], {
-      duration: 280,
-      easing: 'ease-out'
-    });
+    count.animate(
+      [{ transform: 'scale(1)' }, { transform: 'scale(1.35)' }, { transform: 'scale(1)' }],
+      { duration: 280, easing: 'ease-out' }
+    );
   });
 }
 
@@ -172,12 +174,29 @@ function productCard(product) {
   `;
 }
 
+function filteredProducts() {
+  const search = (document.querySelector('#searchInput')?.value || '').toLowerCase().trim();
+  const category = document.querySelector('#categoryFilter')?.value || 'all';
+
+  return PRODUCTS.filter(product => {
+    const matchesSearch = !search || `${product.name} ${product.strength} ${product.category}`.toLowerCase().includes(search);
+    const matchesCategory = category === 'all' || product.category === category;
+    return matchesSearch && matchesCategory;
+  });
+}
+
 function renderProducts(limit) {
   const grid = document.querySelector('#productGrid');
   if (!grid) return;
 
-  const amount = Number(limit || document.body.dataset.limit || PRODUCTS.length);
-  grid.innerHTML = PRODUCTS.slice(0, amount).map(productCard).join('');
+  const isShop = Boolean(document.querySelector('#searchInput') || document.querySelector('#categoryFilter'));
+  const products = isShop ? filteredProducts() : PRODUCTS;
+  const amount = Number(limit || document.body.dataset.limit || products.length);
+  const visibleProducts = products.slice(0, amount);
+
+  grid.innerHTML = visibleProducts.length
+    ? visibleProducts.map(productCard).join('')
+    : '<p class="muted">No products found.</p>';
 }
 
 function viewProduct(id) {
@@ -222,9 +241,11 @@ function goToCheckout() {
 }
 
 function generateOrderNumber() {
-  const last = Number(localStorage.getItem('htxLastOrderNumber') || '10000') + 1;
-  localStorage.setItem('htxLastOrderNumber', String(last));
-  return `HTX-${last}`;
+  const now = new Date();
+  const date = now.toISOString().slice(0, 10).replace(/-/g, '');
+  const time = now.toTimeString().slice(0, 8).replace(/:/g, '');
+  const random = Math.floor(10 + Math.random() * 90);
+  return `HTX-${date}-${time}${random}`;
 }
 
 function shippingCost(subtotal, key) {
@@ -332,10 +353,10 @@ function placeBankOrder(event) {
 
   localStorage.setItem('htxLastOrder', JSON.stringify(order));
   document.querySelector('#checkoutForm')?.classList.add('hidden');
-document.querySelector('#checkoutIntro')?.classList.add('hidden');
-document.querySelector('.checkout-summary-card')?.classList.add('hidden');
+  document.querySelector('#checkoutIntro')?.classList.add('hidden');
+  document.querySelector('.checkout-summary-card')?.classList.add('hidden');
 
-renderOrderConfirmation(order);
+  renderOrderConfirmation(order);
   localStorage.removeItem('htxCart');
   renderCart();
 }
@@ -348,11 +369,8 @@ function renderOrderConfirmation(order) {
 
   box.innerHTML = `
     <div class="confirmation-card">
-
       <p class="eyebrow">Order Received</p>
-
       <h1>Bank Transfer Payment</h1>
-
       <p class="lead">
         Please use your order number as the payment reference.
         Your order will be processed once payment clears.
@@ -367,35 +385,35 @@ function renderOrderConfirmation(order) {
       </div>
 
       <div class="confirmation-actions">
-
-        <button class="btn wide" type="button" data-copy-payment">
-          Copy Bank Details
-        </button>
-
-        <a class="btn ghost wide"
-           href="mailto:${SUPPORT_EMAIL}?subject=Order ${order.orderNumber}&body=${encodeURIComponent(buildEmailBody(order))}">
-          Email Order Details
-        </a>
-
-        <a class="btn ghost wide" href="shop.html">
-          Continue Shopping
-        </a>
-
+        <button class="btn wide" type="button" data-copy-payment>Copy Bank Details</button>
+        <a class="btn ghost wide" href="mailto:${ORDER_EMAIL}?subject=New Order ${order.orderNumber}&body=${encodeURIComponent(buildEmailBody(order))}">Email Order Details</a>
+        <a class="btn ghost wide" href="shop.html">Continue Shopping</a>
       </div>
-
     </div>
   `;
+
+  box.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
+
 function buildEmailBody(order) {
-  const lines = order.products.map(item => `- ${item.name} ${item.strength} x ${item.quantity}: ${money(item.lineTotal)}`).join('\n');
+  const lines = order.products
+    .map(item => `- ${item.name} ${item.strength} x ${item.quantity}: ${money(item.lineTotal)}`)
+    .join('\n');
+
   return `Order Number: ${order.orderNumber}\n\nCustomer:\n${order.customer.fullName}\n${order.customer.email}\n${order.customer.phone}\n${order.customer.address}\n\nProducts:\n${lines}\n\nSubtotal: ${money(order.subtotal)}\nShipping: ${order.shipping.freeShippingApplied ? 'Free Shipping' : `${order.shipping.method} - ${money(order.shipping.cost)}`}\nTotal: ${money(order.total)}\n\nBank Transfer Details:\nAccount Name: ${order.payment.accountName}\nAccount Number: ${order.payment.accountNumber}\nReference: ${order.payment.reference}`;
 }
 
 function copyPaymentDetails() {
   const order = JSON.parse(localStorage.getItem('htxLastOrder') || 'null');
   if (!order) return;
+
   const details = `HTX Peptides NZ Bank Transfer\nOrder Number: ${order.orderNumber}\nAmount Due: ${money(order.total)}\nAccount Name: ${order.payment.accountName}\nAccount Number: ${order.payment.accountNumber}\nReference: ${order.payment.reference}`;
-  navigator.clipboard?.writeText(details).then(() => alert('Bank details copied.'));
+
+  if (navigator.clipboard?.writeText) {
+    navigator.clipboard.writeText(details).then(() => alert('Bank details copied.'));
+  } else {
+    alert(details);
+  }
 }
 
 function bindEvents() {
@@ -458,6 +476,11 @@ function bindEvents() {
 
   document.addEventListener('input', (event) => {
     if (event.target.closest('#checkoutForm')) renderCheckoutSummary();
+    if (event.target.closest('#searchInput') || event.target.closest('#categoryFilter')) renderProducts();
+  });
+
+  document.addEventListener('change', (event) => {
+    if (event.target.closest('#categoryFilter')) renderProducts();
   });
 
   const checkoutForm = document.querySelector('#checkoutForm');

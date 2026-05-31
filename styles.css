@@ -1885,3 +1885,203 @@ img { max-width: 100%; }
 .order-confirmation .bank-details-box {
   margin-bottom: 28px !important;
 }
+
+/* =====================================================
+   FINAL CLEANUP OVERRIDES - HTX Peptides NZ
+   ===================================================== */
+
+/* Header/nav final balance */
+.nav,
+.exact-reference .exact-nav{
+  min-height:125px !important;
+  grid-template-columns:300px 1fr 180px !important;
+}
+
+.logo,
+.exact-logo{
+  width:280px !important;
+  height:auto !important;
+}
+
+.logo img,
+.exact-logo img,
+.exact-reference .logo img,
+.exact-reference .exact-logo img{
+  width:250px !important;
+  max-height:112px !important;
+  object-fit:contain !important;
+}
+
+.nav-links,
+.exact-reference .exact-nav-links{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:38px !important;
+  font-size:17px !important;
+  font-weight:700 !important;
+  text-transform:none !important;
+  letter-spacing:.02em !important;
+}
+
+.nav-links a{
+  white-space:nowrap;
+}
+
+/* Checkout confirmation final */
+.order-confirmation{
+  grid-column:1 / -1 !important;
+  width:100% !important;
+  max-width:820px !important;
+  margin:40px auto !important;
+}
+
+.order-confirmation .confirmation-card{
+  width:100% !important;
+  max-width:820px !important;
+  margin:0 auto !important;
+  padding:34px !important;
+  box-sizing:border-box !important;
+}
+
+.order-confirmation .bank-details-box{
+  margin:24px 0 30px !important;
+}
+
+.order-confirmation .confirmation-actions{
+  display:grid !important;
+  grid-template-columns:1fr !important;
+  gap:14px !important;
+  width:100% !important;
+  margin-top:24px !important;
+}
+
+.order-confirmation .confirmation-actions .btn,
+.order-confirmation .confirmation-actions a{
+  width:100% !important;
+  height:56px !important;
+  min-height:56px !important;
+  margin:0 !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  box-sizing:border-box !important;
+  text-align:center !important;
+}
+
+/* Checkout/product polish */
+.checkout-summary-card,
+.checkout-form-card,
+.confirmation-card,
+.info-card,
+.recommend-card{
+  box-shadow:0 22px 70px rgba(0,0,0,.24);
+}
+
+.free-shipping-note,
+.free-shipping-banner{
+  text-transform:uppercase;
+  letter-spacing:.03em;
+}
+
+/* Cart drawer stability */
+.cart-drawer{
+  z-index:999999 !important;
+}
+
+body.cart-open .cart-drawer,
+.cart-open .cart-drawer{
+  right:0 !important;
+  transform:translateX(0) !important;
+}
+
+/* Mobile safety */
+@media(max-width:900px){
+  .nav,
+  .exact-reference .exact-nav{
+    min-height:96px !important;
+    grid-template-columns:1fr auto !important;
+    padding:10px 18px !important;
+  }
+
+  .nav-links,
+  .exact-reference .exact-nav-links{
+    display:none !important;
+  }
+
+  .logo,
+  .exact-logo{
+    width:210px !important;
+  }
+
+  .logo img,
+  .exact-logo img,
+  .exact-reference .logo img,
+  .exact-reference .exact-logo img{
+    width:200px !important;
+    max-height:94px !important;
+  }
+
+  .checkout-layout{
+    grid-template-columns:1fr !important;
+  }
+}
+
+@media(max-width:560px){
+  .topbar,
+  .exact-reference .exact-topbar{
+    height:auto !important;
+    min-height:34px !important;
+    overflow-x:auto !important;
+    justify-content:flex-start !important;
+    padding:7px 10px !important;
+    gap:14px !important;
+    font-size:10px !important;
+  }
+
+  .logo,
+  .exact-logo{
+    width:170px !important;
+  }
+
+  .logo img,
+  .exact-logo img,
+  .exact-reference .logo img,
+  .exact-reference .exact-logo img{
+    width:165px !important;
+    max-height:78px !important;
+  }
+
+  .cart-btn,
+  .exact-reference .exact-cart{
+    font-size:13px !important;
+    padding:9px 10px !important;
+  }
+
+  .order-confirmation{
+    padding:0 16px !important;
+    margin:28px auto !important;
+  }
+
+  .order-confirmation .confirmation-card{
+    padding:20px !important;
+  }
+
+  .bank-details-box>div{
+    align-items:flex-start !important;
+    gap:10px !important;
+  }
+
+  .bank-details-box b{
+    max-width:56% !important;
+    overflow-wrap:anywhere !important;
+  }
+
+  .checkout-product-line{
+    grid-template-columns:56px 1fr !important;
+  }
+
+  .checkout-product-line strong{
+    grid-column:2 !important;
+  }
+}
