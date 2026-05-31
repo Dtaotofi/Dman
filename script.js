@@ -421,7 +421,7 @@ function renderOrderConfirmation(order) {
       <p class="eyebrow">Order Received</p>
       <h1>Bank Transfer Payment</h1>
       <p class="lead">
-        Please use the last 8 digits of your Order Number as the payment reference when making your bank transfer.
+        Please use the 8-digit reference below when making your bank transfer.
         Your order will be processed once payment clears.
       </p>
 
