@@ -2202,5 +2202,14 @@ body.cart-open .cart-drawer,
   .product-price {
     font-size: 34px;
   }
+@media (max-width: 768px) {
+  .products-grid,
+  .featured-grid,
+  .home-products-grid {
+    grid-template-columns: 1fr;
+    width: 100%;
+    padding: 0 16px;
+    box-sizing: border-box;
+  }
 
 
