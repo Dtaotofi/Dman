@@ -362,6 +362,12 @@ emailjs.send(
     email: order.customer.email,
     phone: order.customer.phone,
     address: order.customer.address,
+    shipping_method: order.shipping.freeShippingApplied
+      ? "Free Shipping"
+      : `${order.shipping.method} - ${money(order.shipping.cost)}`,
+    orders: order.products
+      .map(item => `${item.name} ${item.strength} x ${item.quantity} - ${money(item.lineTotal)}`)
+      .join("\n"),
     total: money(order.total)
   }
 )
