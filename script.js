@@ -152,7 +152,14 @@ ${product.stock > 0
 <b>${money(product.price)}</b>
           <div class="premium-actions">
             <button type="button" class="btn ghost" data-view-product="${product.id}">View Product</button>
-            <button type="button" class="btn" data-add-product="${product.id}">Add To Cart</button>
+            ${product.stock > 0
+  ? `<button type="button" class="btn" data-add-product="${product.id}">
+       Add To Cart
+     </button>`
+  : `<button type="button" class="sold-out-btn" disabled>
+       SOLD OUT
+     </button>`
+}
           </div>
         </div>
       </article>
