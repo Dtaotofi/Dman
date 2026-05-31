@@ -48,6 +48,10 @@ function cartItems() {
     .map(([id, qty]) => {
       const product = getProduct(id);
       if (!product) return null;
+      if (product.stock <= 0) {
+  alert('This product is currently sold out.');
+  return;
+}
       return { ...product, qty: Number(qty) || 0 };
     })
     .filter(item => item && item.qty > 0);
