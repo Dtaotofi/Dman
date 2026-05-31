@@ -2147,4 +2147,28 @@ body.cart-open .cart-drawer,
   width: 100%;
   object-fit: contain;
 }
+@media (max-width: 600px) {
+  .product-modal,
+  .modal-content {
+    max-height: 88vh;
+    overflow-y: auto;
+  }
+
+  .modal-content {
+    width: 94%;
+    padding: 16px;
+  }
+
+  .product-modal img,
+  .modal-content img {
+    max-height: 220px;
+  }
+
+  .modal-content h2 {
+    font-size: 28px;
+  }
+
+  .modal-content .price {
+    font-size: 30px;
+  }
 
