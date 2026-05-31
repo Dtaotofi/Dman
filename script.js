@@ -358,6 +358,7 @@ emailjs.send(
   "template_jcriw1i",
   {
     order_id: order.orderNumber,
+    reference: order.payment.reference,
     customer_name: order.customer.fullName,
     email: order.customer.email,
     phone: order.customer.phone,
@@ -382,6 +383,7 @@ emailjs.send(
   "template_u8hk7us",
   {
     order_id: order.orderNumber,
+     reference: order.payment.reference,
     customer_name: order.customer.fullName,
     email: order.customer.email,
     phone: order.customer.phone,
