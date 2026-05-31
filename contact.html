@@ -1,16 +1,130 @@
-<!doctype html><html lang="en"><head><title>Contact | HTX Peptides NZ</title><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="icon" type="image/png" href="assets/favicon.png">
-  <link rel="stylesheet" href="styles.css"><script defer src="script.js"></script></head><body><div class="topbar"><span class="blue">Research Use Only</span><span>Not For Human Use</span><span>Fast & Discreet Shipping NZ Wide</span><span>Lab Tested</span></div><nav class="nav"><a href="index.html" class="logo" aria-label="HTX Peptides NZ"><img src="assets/htx-logo-transparent.png" alt="HTX Peptides NZ"></a><div class="nav-links">
-      <div class="nav-links">
-  <a href="index.html">Home</a>
-  <a href="shop.html">Shop</a>
-  <a href="coa-testing.html">COA & Testing</a>
-  <a href="terms.html">Terms</a>
-  <a href="contact.html">Contact</a>
+<!doctype html>
+<html lang="en">
+<head>
+  <title>Contact | HTX Peptides NZ</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="script.js"></script>
+</head>
+
+<body>
+
+<div class="topbar">
+  <span class="blue">Research Use Only</span>
+  <span>Not For Human Use</span>
+  <span>Fast & Discreet Shipping NZ Wide</span>
+  <span>Lab Tested</span>
 </div>
 
-    <button class="cart-btn" onclick="openCart()">Cart <span class="cart-count">0</span></button></nav><section class="page-hero"><p class="eyebrow">Contact Support</p><h1>Contact HTX Peptides NZ</h1><p class="lead">For product questions, order support, and checkout help, contact support by email.</p></section><section class="section content-grid"><div class="info-card"><h3>Bank Transfer Orders</h3><p class="muted">Use the website cart to generate your order number and bank transfer payment details.</p><a class="btn whatsapp" href="mailto:support@htxpeptides.co.nz">Email Support</a></div><div class="info-card"><h3>Order Support</h3><p class="muted">Use email for stock questions, shipping updates, and general support.</p><p><b><a href="mailto:support@htxpeptides.co.nz">support@htxpeptides.co.nz</a></b></p></div><div class="info-card"><h3>Research Use Only</h3><p class="muted">All products are supplied strictly for laboratory research use only and are not for human consumption.</p></div></section><aside class="cart-drawer"><div class="cart-head"><h2>Your Cart</h2><button class="icon-btn" onclick="closeCart()">×</button></div><div id="cartItems" class="cart-items"></div><div class="cart-foot">
-      <div class="subtotal"><span>Subtotal</span><b id="cartSubtotal">$0.00 NZD</b></div>
-      <div class="free-shipping-note">Free Shipping on Orders Over $200</div>
-      <button class="btn wide" type="button" data-checkout>Proceed to Checkout</button>
-      <p class="muted">Checkout uses bank transfer payment details. No WhatsApp redirect.</p>
-    </div></aside><div id="productModal" class="modal"></div><footer class="footer"><b>HTX Peptides NZ</b><p>Research Use Only • Not For Human Use • Lab Tested • Batch Verified</p></footer></body></html>
+<nav class="nav">
+  <a href="index.html" class="logo" aria-label="HTX Peptides NZ">
+    <img src="assets/htx-logo-transparent.png" alt="HTX Peptides NZ">
+  </a>
+
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="shop.html">Shop</a>
+    <a href="coa-testing.html">COA & Testing</a>
+    <a href="terms.html">Terms</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  <button class="cart-btn" onclick="openCart()">
+    Cart <span class="cart-count">0</span>
+  </button>
+</nav>
+
+<section class="page-hero">
+  <p class="eyebrow">Contact</p>
+  <h1>Contact HTX Peptides NZ</h1>
+  <p class="lead">
+    For order updates, COA requests, shipping questions, or product enquiries, contact us by email.
+  </p>
+</section>
+
+<section class="section content-grid">
+
+  <div class="info-card">
+    <h3>Email Support</h3>
+    <p class="muted">
+      For all enquiries, please contact our support email. Include your order number if your enquiry relates to an existing order.
+    </p>
+    <a class="btn whatsapp" href="mailto:support@htxpeptides.co.nz">Email Support</a>
+  </div>
+
+  <div class="info-card">
+    <h3>Response Time</h3>
+    <p class="muted">
+      We aim to respond to order enquiries, shipping updates, COA requests, and product questions within 24 hours.
+    </p>
+  </div>
+
+  <div class="info-card">
+    <h3>COA Requests</h3>
+    <p class="muted">
+      For Certificate of Analysis requests, please include the product name, batch number, and order number where applicable.
+    </p>
+  </div>
+
+  <div class="info-card">
+    <h3>Bank Transfer Orders</h3>
+    <p class="muted">
+      Use the website cart to generate your order number and bank transfer payment details before contacting support.
+    </p>
+  </div>
+
+  <div class="info-card">
+    <h3>Shipping Support</h3>
+    <p class="muted">
+      For delivery questions, please include your order number and tracking details if available.
+    </p>
+  </div>
+
+  <div class="info-card">
+    <h3>Research Use Only</h3>
+    <p class="muted">
+      All products are supplied strictly for laboratory research use only and are not for human or animal consumption.
+    </p>
+  </div>
+
+</section>
+
+<aside class="cart-drawer">
+  <div class="cart-head">
+    <h2>Your Cart</h2>
+    <button class="icon-btn" onclick="closeCart()">×</button>
+  </div>
+
+  <div id="cartItems" class="cart-items"></div>
+
+  <div class="cart-foot">
+    <div class="subtotal">
+      <span>Subtotal</span>
+      <b id="cartSubtotal">$0.00 NZD</b>
+    </div>
+
+    <div class="free-shipping-note">Free Shipping on Orders Over $200</div>
+
+    <button class="btn wide" type="button" data-checkout>
+      Proceed to Checkout
+    </button>
+
+    <p class="muted">
+      Checkout uses bank transfer payment details. No WhatsApp redirect.
+    </p>
+  </div>
+</aside>
+
+<div id="productModal" class="modal"></div>
+
+<footer class="footer">
+  <b>HTX Peptides NZ</b>
+  <p>
+    Research Use Only • Not For Human Use • Lab Tested • Batch Verified • NZ Wide Shipping
+  </p>
+</footer>
+
+</body>
+</html>
