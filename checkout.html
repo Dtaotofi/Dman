@@ -8,83 +8,179 @@
   <link rel="stylesheet" href="styles.css">
   <script defer src="script.js"></script>
 </head>
+
 <body class="checkout-page exact-reference">
   <div class="topbar exact-topbar">
-    <span>⚗ RESEARCH USE ONLY</span>
-    <span>NOT FOR HUMAN USE</span>
-    <span>🧪 LAB TESTED</span>
-    <span>🚚 FAST & DISCREET NZ SHIPPING</span>
+    <span>⚗ Research Use Only</span>
+    <span>Not For Human Use</span>
+    <span>🧪 Lab Tested</span>
+    <span>🚚 Fast & Discreet NZ Shipping</span>
   </div>
 
   <nav class="nav exact-nav">
     <a href="index.html" class="logo exact-logo" aria-label="HTX Peptides NZ">
       <img src="assets/htx-logo-transparent.png" alt="HTX Peptides NZ">
     </a>
+
     <div class="nav-links">
-  <a href="index.html">Home</a>
-  <a href="shop.html">Shop</a>
-  <a href="coa-testing.html">COA & Testing</a>
-  <a href="terms.html">Terms</a>
-  <a href="contact.html">Contact</a>
-</div>
-    <button class="cart-btn exact-cart" onclick="openCart()">Cart <span class="cart-count">0</span></button>
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="coa-testing.html">COA & Testing</a>
+      <a href="terms.html">Terms</a>
+      <a href="contact.html">Contact</a>
+    </div>
+
+    <button class="cart-btn exact-cart" onclick="openCart()">
+      Cart <span class="cart-count">0</span>
+    </button>
   </nav>
 
   <section class="page-hero" id="checkoutIntro">
     <p class="eyebrow">Secure Checkout</p>
     <h1>Bank Transfer Checkout</h1>
-    <p class="lead">Enter your details, choose shipping, then receive your order number and bank transfer reference.</p>
+    <p class="lead">
+      Complete your order details, select your shipping method, then receive your order number and bank transfer reference.
+    </p>
   </section>
 
   <main class="checkout-layout section">
     <form id="checkoutForm" class="checkout-form-card">
-      <div class="free-shipping-banner">Free Shipping on Orders Over $200</div>
-      <h2>Contact & Shipping</h2>
-      <label>Full Name<input id="fullName" type="text" autocomplete="name" required></label>
-      <label>Email<input id="email" type="email" autocomplete="email" required></label>
-      <label>Phone Number<input id="phone" type="tel" autocomplete="tel" required></label>
-      <label>Shipping Address<textarea id="address" autocomplete="shipping street-address" required></textarea></label>
+      <div class="free-shipping-banner">
+        Free Shipping on Orders Over $200
+      </div>
+
+      <h2>Contact & Shipping Details</h2>
+
+      <label>
+        Full Name
+        <input id="fullName" type="text" autocomplete="name" required>
+      </label>
+
+      <label>
+        Email Address
+        <input id="email" type="email" autocomplete="email" required>
+      </label>
+
+      <label>
+        Phone Number
+        <input id="phone" type="tel" autocomplete="tel" required>
+      </label>
+
+      <label>
+        Shipping Address
+        <textarea id="address" autocomplete="shipping street-address" required></textarea>
+      </label>
 
       <h2>Shipping Method</h2>
+
       <div class="shipping-options">
-        <label><input type="radio" name="shippingOption" value="standard" checked><span><b>Standard Shipping NZ</b><small>1-3 business days</small></span><strong>$8</strong></label>
-        <label><input type="radio" name="shippingOption" value="express"><span><b>Express Shipping NZ</b><small>1-2 business days</small></span><strong>$12</strong></label>
-        <label><input type="radio" name="shippingOption" value="rural"><span><b>Rural Delivery</b><small>2-5 business days</small></span><strong>$15</strong></label>
+        <label>
+          <input type="radio" name="shippingOption" value="standard" checked>
+          <span>
+            <b>Standard Shipping NZ</b>
+            <small>Estimated 1-3 business days</small>
+          </span>
+          <strong>$8</strong>
+        </label>
+
+        <label>
+          <input type="radio" name="shippingOption" value="express">
+          <span>
+            <b>Express Shipping NZ</b>
+            <small>Estimated 1-2 business days</small>
+          </span>
+          <strong>$12</strong>
+        </label>
+
+        <label>
+          <input type="radio" name="shippingOption" value="rural">
+          <span>
+            <b>Rural Delivery</b>
+            <small>Estimated 2-5 business days</small>
+          </span>
+          <strong>$15</strong>
+        </label>
       </div>
 
       <h2>Payment Method</h2>
+
       <div class="bank-method-box">
         <b>Bank Transfer</b>
-        <p>Bank details will be shown after you place your order. Please use your order number as the reference.</p>
+        <p>
+          Bank transfer details will be shown after placing your order. Please use your generated order number as the payment reference.
+        </p>
+      </div>
+
+      <div class="bank-method-box">
+        <b>Before You Place Your Order</b>
+        <p>
+          Please check your email, phone number, shipping address, selected products, and shipping method are correct before continuing.
+        </p>
       </div>
 
       <button class="btn wide" type="submit">Place Order</button>
+
+      <p class="muted">
+        By placing an order, you acknowledge that all products are supplied strictly for laboratory research use only and are not for human or animal consumption.
+      </p>
     </form>
 
     <aside class="checkout-summary-card">
       <h2>Order Summary</h2>
       <div id="checkoutSummary"></div>
+
+      <div class="bank-method-box">
+        <b>Secure Checkout</b>
+        <p>
+          ✓ Bank transfer payment<br>
+          ✓ Order reference generated<br>
+          ✓ NZ wide shipping<br>
+          ✓ Discreet packaging
+        </p>
+      </div>
     </aside>
 
     <section id="orderConfirmation" class="order-confirmation hidden"></section>
   </main>
 
   <aside class="cart-drawer">
-    <div class="cart-head"><h2>Your Cart</h2><button class="icon-btn" onclick="closeCart()">×</button></div>
+    <div class="cart-head">
+      <h2>Your Cart</h2>
+      <button class="icon-btn" onclick="closeCart()">×</button>
+    </div>
+
     <div id="cartItems" class="cart-items"></div>
+
     <div class="cart-foot">
-      <div class="subtotal"><span>Subtotal</span><b id="cartSubtotal">$0.00 NZD</b></div>
-      <div class="free-shipping-note">Free Shipping on Orders Over $200</div>
-      <button class="btn wide" type="button" data-checkout>Proceed to Checkout</button>
-      <p class="muted">Checkout uses bank transfer payment details. No WhatsApp redirect.</p>
+      <div class="subtotal">
+        <span>Subtotal</span>
+        <b id="cartSubtotal">$0.00 NZD</b>
+      </div>
+
+      <div class="free-shipping-note">
+        Free Shipping on Orders Over $200
+      </div>
+
+      <button class="btn wide" type="button" data-checkout>
+        Proceed to Checkout
+      </button>
+
+      <p class="muted">
+        Checkout uses bank transfer payment details. No WhatsApp redirect.
+      </p>
     </div>
   </aside>
+
   <div id="productModal" class="modal"></div>
 
   <footer class="footer exact-footer">
     <img src="assets/htx-logo-transparent.png" alt="HTX Peptides NZ">
-    <p>Research Use Only • Not For Human Use • Lab Tested • Batch Verified</p>
-    <p><a href="mailto:support@htxpeptides.co.nz">support@htxpeptides.co.nz</a></p>
+    <p>
+      Research Use Only • Not For Human Use • Lab Tested • Batch Verified
+    </p>
+    <p>
+      <a href="mailto:support@htxpeptides.co.nz">support@htxpeptides.co.nz</a>
+    </p>
   </footer>
 </body>
 </html>
