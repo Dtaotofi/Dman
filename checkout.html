@@ -49,7 +49,7 @@ emailjs.init({
     <p class="eyebrow">Secure Checkout</p>
     <h1>Bank Transfer Checkout</h1>
     <p class="lead">
-      Complete your order details, select your shipping method, then receive your order number and bank transfer reference.
+      Complete your order details, then receive your order number and bank transfer reference.
     </p>
   </section>
 
@@ -80,26 +80,21 @@ emailjs.init({
         Shipping Address
         <textarea id="address" autocomplete="shipping street-address" required></textarea>
       </label>
-
       <h2>Shipping</h2>
 
-<div class="bank-method-box">
-  <b>📦 NZ SHIPPING</b>
+      <div class="bank-method-box">
+        <b>📦 NZ SHIPPING</b>
+        <p>
+          Flat Rate Shipping: $12 NZD<br><br>
+          1–3 Business Days<br><br>
+          ✓ Tracking Included<br>
+          ✓ Discreet Packaging<br>
+          ✓ Dispatch Within 1 Business Day<br><br>
+          <strong>FREE SHIPPING ON ORDERS OVER $200 NZD</strong>
+        </p>
+      </div>
 
-  <p>
-    Flat Rate Shipping: $12 NZD<br><br>
-
-    1–3 Business Days<br><br>
-
-    ✓ Tracking Included<br>
-    ✓ Discreet Packaging<br>
-    ✓ Dispatch Within 1 Business Day<br><br>
-
-    <strong>FREE SHIPPING ON ORDERS OVER $200 NZD</strong>
-  </p>
-</div>
-
-<input type="hidden" name="shippingOption" value="standard">
+      <input type="hidden" name="shippingOption" value="standard">
 
       <h2>Payment Method</h2>
 
