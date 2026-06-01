@@ -15,6 +15,7 @@ const BANK_ACCOUNT_NUMBER = '06-0489-0153992-02';
 const SUPPORT_EMAIL = 'support@htxpeptides.co.nz';
 const ORDER_EMAIL = 'orders@htxpeptides.co.nz';
 const SHIPPING_OPTIONS = {
+  const SHIPPING_OPTIONS = {
   standard: {
     label: 'Flat Rate NZ Shipping',
     price: 12,
