@@ -6,8 +6,8 @@ const PRODUCTS = [
   { id: 'bpctb20', name: 'BPC-157 + TB-500 Blend', strength: '20mg', price: 180, stock: 10, category: 'Recovery Research', image: 'assets/bpc-tb-20mg.png' },
   { id: 'klow80', name: 'KLOW', strength: '80mg', price: 220, stock: 20, category: 'Multi Peptide Blend', image: 'assets/klow-80mg.png' },
   { id: 'igf1lr3', name: 'IGF-1 LR3', strength: '1mg', price: 150, stock: 10, category: 'GH Research', image: 'assets/igf-1-lr3-1mg.png' },
-  { id: 'bac3', name: 'BAC Water', strength: '3ml', price: 20, stock: 5, category: 'Ancillary', image: 'assets/bac-water-3ml.png' },
-  { id: 'bac10', name: 'BAC Water', strength: '10ml', price: 30, stock: 10, category: 'Ancillary', image: 'assets/bac-water-10ml.png' }
+  { id: 'bac3', name: 'BAC Water', strength: '3ml', price: 20, stock: 0, category: 'Ancillary', image: 'assets/bac-water-3ml.png' },
+  { id: 'bac10', name: 'BAC Water', strength: '10ml', price: 30, stock: 0, category: 'Ancillary', image: 'assets/bac-water-10ml.png' }
 ];
 
 const BANK_ACCOUNT_NAME = 'HTX Peptides NZ';
@@ -15,9 +15,12 @@ const BANK_ACCOUNT_NUMBER = '06-0489-0153992-02';
 const SUPPORT_EMAIL = 'support@htxpeptides.co.nz';
 const ORDER_EMAIL = 'orders@htxpeptides.co.nz';
 const SHIPPING_OPTIONS = {
-  standard: { label: 'Standard Shipping NZ', price: 8, eta: '1-3 business days' },
-  express: { label: 'Express Shipping NZ', price: 12, eta: '1-2 business days' },
-  rural: { label: 'Rural Delivery', price: 15, eta: '2-5 business days' }
+  const SHIPPING_OPTIONS = {
+  standard: {
+    label: 'Flat Rate NZ Shipping',
+    price: 12,
+    eta: '1-3 business days'
+  }
 };
 
 function money(value) {
