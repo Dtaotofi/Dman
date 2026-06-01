@@ -156,7 +156,7 @@ body.exact-reference{
   color:#fff;
 }
 
-{.exact-reference .exact-hero h1 span,
+.exact-reference .exact-hero h1 span,
 .exact-reference .exact-hero h2 span{
   color:#168dff;
   background:linear-gradient(180deg,#309dff,#066ce9);
