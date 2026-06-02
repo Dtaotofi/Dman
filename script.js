@@ -1,11 +1,11 @@
 const PRODUCTS = [
   { id: 'reta10', name: 'Retatrutide', strength: '10mg', price: 120, stock: 10, category: 'Metabolic Research', image: 'assets/retatrutide-10mg.png' },
   { id: 'reta15', name: 'Retatrutide', strength: '15mg', price: 150, stock: 0, category: 'Metabolic Research', image: 'assets/retatrutide-15mg.png' },
-  { id: 'reta20', name: 'Retatrutide', strength: '20mg', price: 220, stock: 10, category: 'Metabolic Research', image: 'assets/retatrutide-20mg.png' },
+  { id: 'reta20', name: 'Retatrutide', strength: '20mg', price: 220, stock: 0, category: 'Metabolic Research', image: 'assets/retatrutide-20mg.png' },
   { id: 'cjcipa10', name: 'CJC-1295 + Ipamorelin Blend', strength: '10mg', price: 100, stock: 20, category: 'GH Research', image: 'assets/cjc-ipa-10mg.png' },
   { id: 'bpctb20', name: 'BPC-157 + TB-500 Blend', strength: '20mg', price: 180, stock: 10, category: 'Recovery Research', image: 'assets/bpc-tb-20mg.png' },
   { id: 'klow80', name: 'KLOW', strength: '80mg', price: 220, stock: 20, category: 'Multi Peptide Blend', image: 'assets/klow-80mg.png' },
-  { id: 'igf1lr3', name: 'IGF-1 LR3', strength: '1mg', price: 150, stock: 10, category: 'GH Research', image: 'assets/igf-1-lr3-1mg.png' },
+  { id: 'igf1lr3', name: 'IGF-1 LR3', strength: '1mg', price: 150, stock: 0, category: 'GH Research', image: 'assets/igf-1-lr3-1mg.png' },
   { id: 'bac3', name: 'BAC Water', strength: '3ml', price: 20, stock: 0, category: 'Ancillary', image: 'assets/bac-water-3ml.png' },
   { id: 'bac10', name: 'BAC Water', strength: '10ml', price: 30, stock: 0, category: 'Ancillary', image: 'assets/bac-water-10ml.png' }
 ];
