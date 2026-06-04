@@ -11,7 +11,7 @@ const PRODUCTS = [
 ];
 
 const BANK_ACCOUNT_NAME = 'HTX Peptides NZ';
-const BANK_ACCOUNT_NUMBER = '06-0489-0153992-02';
+const BANK_ACCOUNT_NUMBER = '06-0489-0153992-06';
 const SUPPORT_EMAIL = 'support@htxpeptides.co.nz';
 const ORDER_EMAIL = 'orders@htxpeptides.co.nz';
 const SHIPPING_OPTIONS = {
