@@ -1,5 +1,5 @@
 const PRODUCTS = [
-  { id: 'retavaluebundle', name: 'Retatrutide Value Bundle', strength: '20mg Total + Recon Kit', price: 230, stock: 15, category: 'Metabolic Research', image: 'assets/retatrutide-value-bundle.png', description: 'Value bundle supplied for research use only with complete recon kit included.', details: ['2 x Retatrutide 10mg vials', '10mL BAC Water', '3mL Luer Lock syringe', 'Drawing needle', '5 x 100IU insulin syringes', '10 x alcohol prep wipes'] },
+  { id: 'retavaluebundle', name: 'Retatrutide Value Bundle', strength: '20mg Total + Recon Kit', price: 230, stock: 15, category: 'Metabolic Research', image: 'assets/Retatrutide value bundle.png', description: 'Value bundle supplied for research use only with complete recon kit included.', details: ['2 x Retatrutide 10mg vials', '10mL BAC Water', '3mL Luer Lock syringe', 'Drawing needle', '5 x 100IU insulin syringes', '10 x alcohol prep wipes'] },
   { id: 'reta10', name: 'Retatrutide', strength: '10mg', price: 120, stock: 30, category: 'Metabolic Research', image: 'assets/retatrutide-10mg.png' },
   { id: 'bpctb20', name: 'BPC-157 + TB-500 Blend', strength: '20mg', price: 180, stock: 10, category: 'Recovery Research', image: 'assets/bpc-tb-20mg.png' },
   { id: 'klow80', name: 'KLOW', strength: '80mg', price: 220, stock: 20, category: 'Multi Peptide Blend', image: 'assets/klow-80mg.png' },
