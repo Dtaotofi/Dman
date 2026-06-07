@@ -2332,3 +2332,16 @@ body.cart-open .cart-drawer,
   color: #b7c7dd;
   line-height: 1.4;
 }
+.bulk-banner {
+  max-width: 900px;
+  margin: 20px auto 30px;
+  padding: 14px 20px;
+  text-align: center;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #7fd3ff;
+  border: 1px solid rgba(0, 170, 255, 0.35);
+  border-radius: 14px;
+  background: rgba(0, 100, 255, 0.08);
+  box-shadow: 0 0 20px rgba(0, 100, 255, 0.15);
+}
