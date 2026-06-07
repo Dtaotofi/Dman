@@ -1,76 +1,17 @@
 const PRODUCTS = [
+  { id: 'retavaluebundle', name: 'Retatrutide Value Bundle', strength: '20mg Total + Recon Kit', price: 230, stock: 15, category: 'Metabolic Research', image: 'assets/retatrutide-value-bundle.png', description: 'Value bundle supplied for research use only with complete recon kit included.', details: ['2 x Retatrutide 10mg vials', '10mL BAC Water', '3mL Luer Lock syringe', 'Drawing needle', '5 x 100IU insulin syringes', '10 x alcohol prep wipes'] },
   { id: 'reta10', name: 'Retatrutide', strength: '10mg', price: 120, stock: 30, category: 'Metabolic Research', image: 'assets/retatrutide-10mg.png' },
   { id: 'reta20', name: 'Retatrutide', strength: '20mg', price: 220, stock: 10, category: 'Metabolic Research', image: 'assets/retatrutide-20mg.png' },
-  { id: 'mots10', name: 'MOTS-C', strength: '10mg', price: 150, stock: 10, category: 'Metabolic Research', image: 'assets/mots-c-10mg.png' },
+  { id: 'mots10', name: 'MOTS-C', strength: '10mg', price: 110, stock: 10, category: 'Metabolic Research', image: 'assets/mots-c-10mg.png' },
   { id: 'cjcipa10', name: 'CJC-1295 + Ipamorelin Blend', strength: '10mg', price: 120, stock: 20, category: 'GH Research', image: 'assets/cjc-ipa-10mg.png' },
   { id: 'bpctb20', name: 'BPC-157 + TB-500 Blend', strength: '20mg', price: 180, stock: 10, category: 'Recovery Research', image: 'assets/bpc-tb-20mg.png' },
   { id: 'klow80', name: 'KLOW', strength: '80mg', price: 220, stock: 20, category: 'Multi Peptide Blend', image: 'assets/klow-80mg.png' },
   { id: 'igf1lr3', name: 'IGF-1 LR3', strength: '1mg', price: 150, stock: 7, category: 'GH Research', image: 'assets/igf-1-lr3-1mg.png' },
   { id: 'bac3', name: 'BAC Water', strength: '3ml', price: 20, stock: 30, category: 'Ancillary', image: 'assets/bac-water-3ml.png' },
   { id: 'bac10', name: 'BAC Water', strength: '10ml', price: 30, stock: 30, category: 'Ancillary', image: 'assets/bac-water-10ml.png' },
-  {
-    id: 'sterilekit5',
-    name: 'Sterile Injection Kit',
-    strength: '5 Pack',
-    price: 10,
-    stock: 50,
-    category: 'Ancillary',
-    image: 'assets/sterile-injection-kit-5-pack.png',
-    description: 'Sterile injection accessory kit supplied for research use only.',
-    details: [
-      '5 x 100IU insulin syringes',
-      '10 x alcohol prep wipes',
-      'Sterile and single use'
-    ]
-  },
-  {
-    id: 'sterilekit10',
-    name: 'Sterile Injection Kit',
-    strength: '10 Pack',
-    price: 15,
-    stock: 50,
-    category: 'Ancillary',
-    image: 'assets/sterile-injection-kit-10-pack.png',
-    description: 'Sterile injection accessory kit supplied for research use only.',
-    details: [
-      '10 x 100IU insulin syringes',
-      '20 x alcohol prep wipes',
-      'Sterile and single use'
-    ]
-  },
-  {
-    id: 'reconkit',
-    name: 'Recon & Injection Kit',
-    strength: 'Complete Kit',
-    price: 40,
-    stock: 50,
-    category: 'Ancillary',
-    image: 'assets/recon-injection-kit.png',
-    description: 'Complete reconstitution and injection accessory kit supplied for research use only.',
-    details: [
-      '10mL BAC Water',
-      '3mL Luer Lock syringe',
-      'Drawing needle',
-      '5 x 100IU insulin syringes',
-      '10 x alcohol prep wipes'
-    ]
-  },
-  {
-    id: 'retavaluebundle',
-    name: 'Retatrutide Value Bundle',
-    strength: '20mg Total + Recon Kit',
-    price: 230,
-    stock: 15,
-    category: 'Metabolic Research',
-    image: 'assets/retatrutide-value-bundle.png',
-    description: 'Value bundle supplied for research use only with complete recon kit included.',
-    details: [
-      '2 x Retatrutide 10mg vials',
-      '10mL BAC Water',
-      '3mL Luer Lock syringe',
-      'Drawing needle',
-      '5 x 100IU insulin syringes',
-      '10 x alcohol prep wipes'
+  { id: 'reconkit', name: 'Recon & Injection Kit', strength: 'Complete Kit', price: 40, stock: 50, category: 'Ancillary', image: 'assets/recon-injection-kit.png', description: 'Complete reconstitution and injection accessory kit supplied for research use only.', details: ['10mL BAC Water', '3mL Luer Lock syringe', 'Drawing needle', '5 x 100IU insulin syringes', '10 x alcohol prep wipes'] },
+  { id: 'sterilekit5', name: 'Sterile Injection Kit', strength: '5 Pack', price: 10, stock: 20, category: 'Ancillary', image: 'assets/sterile-injection-kit-5-pack.png', description: 'Sterile injection accessory kit supplied for research use only.', details: ['5 x 100IU insulin syringes', '10 x alcohol prep wipes', 'Sterile and single use'] },
+  { id: 'sterilekit10', name: 'Sterile Injection Kit', strength: '10 Pack', price: 15, stock: 20, category: 'Ancillary', image: 'assets/sterile-injection-kit-10-pack.png', description: 'Sterile injection accessory kit supplied for research use only.', details: ['10 x 100IU insulin syringes', '20 x alcohol prep wipes', 'Sterile and single use'] },
     ]
   }
 ];
