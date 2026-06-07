@@ -2332,6 +2332,7 @@ body.cart-open .cart-drawer,
   color: #b7c7dd;
   line-height: 1.4;
 }
+/* Bulk Vials Banner */
 .bulk-banner {
   max-width: 900px;
   margin: 20px auto 30px;
@@ -2344,4 +2345,14 @@ body.cart-open .cart-drawer,
   border-radius: 14px;
   background: rgba(0, 100, 255, 0.08);
   box-shadow: 0 0 20px rgba(0, 100, 255, 0.15);
+}
+
+.bulk-banner br {
+  margin-bottom: 6px;
+}
+
+.bulk-banner:hover {
+  border-color: rgba(0, 216, 255, 0.5);
+  box-shadow: 0 0 30px rgba(0, 140, 255, 0.25);
+}
 }
