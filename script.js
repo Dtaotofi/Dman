@@ -3,7 +3,7 @@ const PRODUCTS = [
   { id: 'reta10', name: 'Retatrutide', strength: '10mg', price: 120, stock: 30, category: 'Metabolic Research', image: 'assets/retatrutide-10mg.png' },
   { id: 'bpctb20', name: 'BPC-157 + TB-500 Blend', strength: '20mg', price: 180, stock: 10, category: 'Recovery Research', image: 'assets/bpc-tb-20mg.png' },
   { id: 'klow80', name: 'KLOW', strength: '80mg', price: 220, stock: 20, category: 'Multi Peptide Blend', image: 'assets/klow-80mg.png' },
-  { id: 'bpc5bulk', name: 'BPC-157 Bulk Pack', strength: '10 x 5mg Vials', price: 400, stock: 10, category: 'Bulk Vials', image: 'assets/BPC-157 5mg Bulk.png' },
+  { id: 'bpc5bulk', name: 'BPC-157 Bulk Pack', strength: '10 x 5mg Vials', price: 500, stock: 10, category: 'Bulk Vials', image: 'assets/BPC-157 5mg Bulk.png' },
   { id: 'tb5bulk', name: 'TB-500 Bulk Pack', strength: '10 x 5mg Vials', price: 600, stock: 10, category: 'Bulk Vials', image: 'assets/TB-500 5mg Bulk.png' },
   { id: 'reta20', name: 'Retatrutide', strength: '20mg', price: 220, stock: 10, category: 'Metabolic Research', image: 'assets/retatrutide-20mg.png' },
   { id: 'mots10', name: 'MOTS-C', strength: '10mg', price: 110, stock: 10, category: 'Metabolic Research', image: 'assets/mots-c-10mg.png' },
