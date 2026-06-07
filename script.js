@@ -23,8 +23,6 @@ const PRODUCTS = [
   { id: 'reconkit', name: 'Recon & Injection Kit', strength: 'Complete Kit', price: 40, stock: 50, category: 'Ancillary', image: 'assets/recon-injection-kit.png', description: 'Complete reconstitution and injection accessory kit supplied for research use only.', details: ['10mL BAC Water', '3mL Luer Lock syringe', 'Drawing needle', '5 x 100IU insulin syringes', '10 x alcohol prep wipes'] },
   { id: 'sterilekit5', name: 'Sterile Injection Kit', strength: '5 Pack', price: 10, stock: 20, category: 'Ancillary', image: 'assets/sterile-injection-kit-5-pack.png', description: 'Sterile injection accessory kit supplied for research use only.', details: ['5 x 100IU insulin syringes', '10 x alcohol prep wipes', 'Sterile and single use'] },
   { id: 'sterilekit10', name: 'Sterile Injection Kit', strength: '10 Pack', price: 15, stock: 20, category: 'Ancillary', image: 'assets/sterile-injection-kit-10-pack.png', description: 'Sterile injection accessory kit supplied for research use only.', details: ['10 x 100IU insulin syringes', '20 x alcohol prep wipes', 'Sterile and single use'] },
-    ]
-  }
 ];
 
 const BANK_ACCOUNT_NAME = 'HTX Peptides';
