@@ -2293,3 +2293,42 @@ body.cart-open .cart-drawer,
   color: #b7c7dd;
   line-height: 1.4;
 }
+
+}
+
+/* Add-on checkbox styling */
+.addon-box {
+  margin: 18px 0;
+  padding: 14px;
+  border: 1px solid rgba(0, 132, 255, 0.35);
+  border-radius: 14px;
+  background: rgba(0, 132, 255, 0.08);
+}
+
+.addon-title {
+  margin: 0 0 10px;
+  font-weight: 800;
+  color: #fff;
+}
+
+.addon-label {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font-weight: 700;
+  color: #fff;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.addon-label input,
+.addon-label span {
+  cursor: pointer;
+}
+
+.addon-box small {
+  display: block;
+  margin-top: 6px;
+  color: #b7c7dd;
+  line-height: 1.4;
+}

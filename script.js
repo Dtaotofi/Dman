@@ -3,10 +3,14 @@ const PRODUCTS = [
   { id: 'reta10', name: 'Retatrutide', strength: '10mg', price: 120, stock: 30, category: 'Metabolic Research', image: 'assets/retatrutide-10mg.png' },
   { id: 'reta20', name: 'Retatrutide', strength: '20mg', price: 220, stock: 10, category: 'Metabolic Research', image: 'assets/retatrutide-20mg.png' },
   { id: 'mots10', name: 'MOTS-C', strength: '10mg', price: 110, stock: 10, category: 'Metabolic Research', image: 'assets/mots-c-10mg.png' },
+  { id: 'igf1lr3', name: 'IGF-1 LR3', strength: '1mg', price: 150, stock: 7, category: 'GH Research', image: 'assets/igf-1-lr3-1mg.png' },
+  { id: 'cjcipa10', name: 'CJC-1295 + Ipamorelin Blend', strength: '10mg', price: 120, stock: 20, category: 'GH Research', image: 'assets/cjc-ipa-10mg.png' },
   { id: 'bpctb20', name: 'BPC-157 + TB-500 Blend', strength: '20mg', price: 180, stock: 10, category: 'Recovery Research', image: 'assets/bpc-tb-20mg.png' },
   { id: 'klow80', name: 'KLOW', strength: '80mg', price: 220, stock: 20, category: 'Multi Peptide Blend', image: 'assets/klow-80mg.png' },
-  { id: 'cjcipa10', name: 'CJC-1295 + Ipamorelin Blend', strength: '10mg', price: 120, stock: 20, category: 'GH Research', image: 'assets/cjc-ipa-10mg.png' },
-  { id: 'igf1lr3', name: 'IGF-1 LR3', strength: '1mg', price: 150, stock: 7, category: 'GH Research', image: 'assets/igf-1-lr3-1mg.png' },
+  { id: 'bpc5', name: 'BPC-157', strength: '5mg', price: 60, stock: 10, category: 'Recovery Research', image: 'assets/BPC-157 5mg.png' },
+  { id: 'bpc10', name: 'BPC-157', strength: '10mg', price: 90, stock: 10, category: 'Recovery Research', image: 'assets/BPC-157 10mg.png' },
+  { id: 'tb5', name: 'TB-500', strength: '5mg', price: 80, stock: 10, category: 'Recovery Research', image: 'assets/TB-500 5mg.png' },
+  { id: 'kiss10', name: 'Kisspeptin', strength: '10mg', price: 100, stock: 10, category: 'GH Research', image: 'assets/Kisspeptin 10mg.png' },
   { id: 'reta10bulk', name: 'Retatrutide Bulk Pack', strength: '10 x 10mg Vials', price: 700, stock: 10, category: 'Bulk Vials', image: 'assets/Retatrutide 10mg Bulk.png' },
   { id: 'tesa10bulk', name: 'Tesamorelin Bulk Pack', strength: '10 x 10mg Vials', price: 1000, stock: 10, category: 'Bulk Vials', image: 'assets/Tesamorelin 10mg Bulk.png' },
   { id: 'bpc5bulk', name: 'BPC-157 Bulk Pack', strength: '10 x 5mg Vials', price: 600, stock: 10, category: 'Bulk Vials', image: 'assets/BPC-157 5mg Bulk.png' },
@@ -22,7 +26,7 @@ const PRODUCTS = [
   { id: 'bac10', name: 'BAC Water', strength: '10ml', price: 30, stock: 30, category: 'Ancillary', image: 'assets/bac-water-10ml.png' },
   { id: 'reconkit', name: 'Recon & Injection Kit', strength: 'Complete Kit', price: 40, stock: 50, category: 'Ancillary', image: 'assets/recon-injection-kit.png', description: 'Complete reconstitution and injection accessory kit supplied for research use only.', details: ['10mL BAC Water', '3mL Luer Lock syringe', 'Drawing needle', '5 x 100IU insulin syringes', '10 x alcohol prep wipes'] },
   { id: 'sterilekit5', name: 'Sterile Injection Kit', strength: '5 Pack', price: 10, stock: 20, category: 'Ancillary', image: 'assets/sterile-injection-kit-5-pack.png', description: 'Sterile injection accessory kit supplied for research use only.', details: ['5 x 100IU insulin syringes', '10 x alcohol prep wipes', 'Sterile and single use'] },
-  { id: 'sterilekit10', name: 'Sterile Injection Kit', strength: '10 Pack', price: 15, stock: 20, category: 'Ancillary', image: 'assets/sterile-injection-kit-10-pack.png', description: 'Sterile injection accessory kit supplied for research use only.', details: ['10 x 100IU insulin syringes', '20 x alcohol prep wipes', 'Sterile and single use'] },
+  { id: 'sterilekit10', name: 'Sterile Injection Kit', strength: '10 Pack', price: 15, stock: 20, category: 'Ancillary', image: 'assets/sterile-injection-kit-10-pack.png', description: 'Sterile injection accessory kit supplied for research use only.', details: ['10 x 100IU insulin syringes', '20 x alcohol prep wipes', 'Sterile and single use'] }
 ];
 
 const BANK_ACCOUNT_NAME = 'HTX Peptides';
@@ -275,7 +279,7 @@ function renderProducts(limit) {
     : '<p class="muted">No products found.</p>';
 }
 function showReconAddon(product) {
-  return product.category !== 'Ancillary';
+  return product.category !== 'Ancillary' && product.category !== 'Bulk Vials' && product.id !== 'retavaluebundle';
 }
 
 function viewProduct(id) {
@@ -307,14 +311,18 @@ function viewProduct(id) {
           </ul>
           ${showReconAddon(product) ? `
   <div class="addon-box">
+    <p class="addon-title">Recommended Add-Ons</p>
     <label class="addon-label">
-  <input type="checkbox" id="addReconKit">
-  <span>Add Complete Recon Kit (+$40)</span>
-</label>
-    <small>
-      Includes 10mL BAC Water, 3mL Luer Lock syringe,
-      drawing needle, 5 insulin syringes and 10 alcohol prep wipes.
-    </small>
+      <input type="checkbox" id="addSterileKit">
+      <span>Add Sterile Injection Kit (+$10)</span>
+    </label>
+    <small>Includes 5 x 100IU insulin syringes and 10 alcohol prep wipes.</small>
+
+    <label class="addon-label">
+      <input type="checkbox" id="addReconKit">
+      <span>Add Complete Recon Kit (+$40)</span>
+    </label>
+    <small>Includes 10mL BAC Water, 3mL Luer Lock syringe, drawing needle, 5 insulin syringes and 10 alcohol prep wipes.</small>
   </div>
 ` : ''}
           ${product.stock > 0
@@ -575,13 +583,20 @@ function bindEvents() {
       event.preventDefault();
       addToCart(addButton.dataset.addProduct, 1);
 
-const reconCheckbox = document.querySelector('#addReconKit');
-if (reconCheckbox && reconCheckbox.checked) {
-  addToCart('reconkit', 1);
-}
+      const modalCard = addButton.closest('#productModal');
+      const sterileCheckbox = modalCard?.querySelector('#addSterileKit');
+      const reconCheckbox = modalCard?.querySelector('#addReconKit');
 
-if (addButton.dataset.closeAfterAdd === 'true') closeModal();
-return;
+      if (sterileCheckbox && sterileCheckbox.checked) {
+        addToCart('sterilekit5', 1);
+      }
+
+      if (reconCheckbox && reconCheckbox.checked) {
+        addToCart('reconkit', 1);
+      }
+
+      if (addButton.dataset.closeAfterAdd === 'true') closeModal();
+      return;
     }
 
     const viewButton = event.target.closest('[data-view-product]');
