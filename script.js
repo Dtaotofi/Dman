@@ -1,7 +1,7 @@
 const PRODUCTS = [
   { id: 'reta10', name: 'Retatrutide', strength: '10mg', price: 120, stock: 10, category: 'Metabolic Research', image: 'assets/retatrutide-10mg.png' },
-  { id: 'reta15', name: 'Retatrutide', strength: '15mg', price: 150, stock: 0, category: 'Metabolic Research', image: 'assets/retatrutide-15mg.png' },
   { id: 'reta20', name: 'Retatrutide', strength: '20mg', price: 220, stock: 0, category: 'Metabolic Research', image: 'assets/retatrutide-20mg.png' },
+  { id: 'mots10', name: 'MOTS-C', strength: '10mg', price: 150, stock: 10, category: 'Metabolic Research', image: 'assets/mots-c-10mg.png' },
   { id: 'cjcipa10', name: 'CJC-1295 + Ipamorelin Blend', strength: '10mg', price: 120, stock: 20, category: 'GH Research', image: 'assets/cjc-ipa-10mg.png' },
   { id: 'bpctb20', name: 'BPC-157 + TB-500 Blend', strength: '20mg', price: 170, stock: 10, category: 'Recovery Research', image: 'assets/bpc-tb-20mg.png' },
   { id: 'klow80', name: 'KLOW', strength: '80mg', price: 220, stock: 20, category: 'Multi Peptide Blend', image: 'assets/klow-80mg.png' },
@@ -10,7 +10,7 @@ const PRODUCTS = [
   { id: 'bac10', name: 'BAC Water', strength: '10ml', price: 30, stock: 30, category: 'Ancillary', image: 'assets/bac-water-10ml.png' }
 ];
 
-const BANK_ACCOUNT_NAME = 'HTX Peptides NZ';
+const BANK_ACCOUNT_NAME = 'HTX Peptides';
 const BANK_ACCOUNT_NUMBER = '06-0489-0153992-06';
 const SUPPORT_EMAIL = 'support@htxpeptides.co.nz';
 const ORDER_EMAIL = 'orders@htxpeptides.co.nz';
