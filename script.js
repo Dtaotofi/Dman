@@ -265,6 +265,9 @@ function renderProducts(limit) {
     ? visibleProducts.map(productCard).join('')
     : '<p class="muted">No products found.</p>';
 }
+function showReconAddon(product) {
+  return product.category !== 'Ancillary';
+}
 
 function viewProduct(id) {
   const product = getProduct(id);
@@ -293,6 +296,18 @@ function viewProduct(id) {
               'COA available on request'
             ]).map(detail => `<li>${detail}</li>`).join('')}
           </ul>
+          ${showReconAddon(product) ? `
+  <div class="addon-box">
+    <label>
+      <input type="checkbox" id="addReconKit">
+      Add Recon & Injection Kit (+$40)
+    </label>
+    <small>
+      Includes 10mL BAC Water, 3mL Luer Lock syringe,
+      drawing needle, 5 insulin syringes and 10 alcohol prep wipes.
+    </small>
+  </div>
+` : ''}
           ${product.stock > 0
   ? `<button class="btn wide" type="button" data-add-product="${product.id}" data-close-after-add="true">Add to Cart</button>`
   : `<button class="sold-out-btn wide" type="button" disabled>SOLD OUT</button>`
@@ -550,8 +565,14 @@ function bindEvents() {
     if (addButton) {
       event.preventDefault();
       addToCart(addButton.dataset.addProduct, 1);
-      if (addButton.dataset.closeAfterAdd === 'true') closeModal();
-      return;
+
+const reconCheckbox = document.querySelector('#addReconKit');
+if (reconCheckbox && reconCheckbox.checked) {
+  addToCart('reconkit', 1);
+}
+
+if (addButton.dataset.closeAfterAdd === 'true') closeModal();
+return;
     }
 
     const viewButton = event.target.closest('[data-view-product]');
