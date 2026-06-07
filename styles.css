@@ -2355,4 +2355,7 @@ body.cart-open .cart-drawer,
   border-color: rgba(0, 216, 255, 0.5);
   box-shadow: 0 0 30px rgba(0, 140, 255, 0.25);
 }
+.stock-more {
+  margin-top: 35px !important;
+}
 }
