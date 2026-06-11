@@ -2443,5 +2443,22 @@ body.cart-open .cart-drawer,
 
 .bulk-table th{
   color:#4b9bff;
+}.cart-warning{
+  border:1px solid rgba(255,190,80,.45);
+  background:rgba(255,190,80,.12);
+  color:#ffe2a8;
+  border-radius:12px;
+  padding:10px 12px;
+  font-size:13px;
+  line-height:1.4;
+  font-weight:800;
+  margin-bottom:12px;
+}
+
+.btn.disabled,
+.btn:disabled{
+  opacity:.45;
+  cursor:not-allowed !important;
+  pointer-events:none;
 }
 
