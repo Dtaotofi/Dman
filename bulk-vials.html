@@ -1,85 +1,25 @@
-<section class="page-header">
-    <h1>BULK VIAL PACKS</h1>
-    <p>5 & 10 vial packs available through our weekly bulk order cycle.</p>
-</section>
+<!doctype html><html lang="en"><head><title>Shop | HTX Peptides NZ</title><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="stylesheet" href="styles.css"><script defer src="script.js"></script></head><body><div class="shipping-notice">
+📦 <strong>Please Note:</strong> Dispatch resumes <strong>15 June 2026</strong>. Orders remain open and secured. Additional stock and new catalogue items are expected to arrive during this period.
+</div><div class="topbar"><span class="blue">Research Use Only</span><span>Not For Human Use</span><span>Fast & Discreet Shipping NZ Wide</span><span>Lab Tested</span></div><nav class="nav">
+  <a href="index.html" class="logo" aria-label="HTX Peptides NZ">
+    <img src="assets/htx-logo-transparent.png" alt="HTX Peptides NZ">
+  </a>
 
-<section class="bulk-section">
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="shop.html">Shop</a>
+    <a href="bulk-vials.html">Bulk Vials</a>
+    <a href="coa-testing.html">Quality & Testing</a>
+    <a href="terms.html">Terms</a>
+    <a href="contact.html">Contact</a>
+  </div>
 
-    <div class="bulk-card">
-        <h2>Metabolic Research</h2>
-
-        <table class="bulk-table">
-            <tr>
-                <th>Product</th>
-                <th>10 Vials</th>
-            </tr>
-            <tr>
-                <td>Retatrutide 10mg</td>
-                <td>$700</td>
-            </tr>
-            <tr>
-                <td>Retatrutide 20mg</td>
-                <td>$1200</td>
-            </tr>
-        </table>
-    </div>
-
-    <div class="bulk-card">
-        <h2>Recovery Research</h2>
-
-        <table class="bulk-table">
-            <tr>
-                <th>Product</th>
-                <th>10 Vials</th>
-            </tr>
-            <tr>
-                <td>BPC-157 10mg</td>
-                <td>$800</td>
-            </tr>
-            <tr>
-                <td>TB-500 10mg</td>
-                <td>$1100</td>
-            </tr>
-            <tr>
-                <td>BPC/TB Blend 20mg</td>
-                <td>$1700</td>
-            </tr>
-            <tr>
-                <td>KLOW 80mg</td>
-                <td>$2200</td>
-            </tr>
-        </table>
-    </div>
-
-    <div class="bulk-card">
-        <h2>Hormone Research</h2>
-
-        <table class="bulk-table">
-            <tr>
-                <th>Product</th>
-                <th>10 Vials</th>
-            </tr>
-            <tr>
-                <td>CJC-1295 + Ipamorelin 10mg</td>
-                <td>$1000</td>
-            </tr>
-            <tr>
-                <td>IGF-1 LR3 1mg</td>
-                <td>$1400</td>
-            </tr>
-        </table>
-    </div>
-
-</section>
-
-<section class="bulk-info">
-    <h2>Weekly Bulk Order Cycle</h2>
-
-    <ul>
-        <li>Orders close Friday 5:00PM NZT</li>
-        <li>Payment secures your allocation</li>
-        <li>Supplier order placed weekly</li>
-        <li>Approx. 10 day turnaround</li>
-        <li>ETA updates provided after order confirmation</li>
-    </ul>
-</section>
+  <button class="cart-btn" onclick="openCart()">
+    Cart <span class="cart-count">0</span>
+  </button>
+</nav><section class="page-hero"><p class="eyebrow">Shop</p><h1>Research Peptides</h1><p class="lead">Search, filter, view product details, add to cart. </p></section><section class="section"><div class="filters"><input id="searchInput" placeholder="Search products..."><select id="categoryFilter"><option value="all">All Categories</option><option>Metabolic Research</option><option>Recovery Research</option><option>GH Research</option><option>Cellular Research</option><option>Multi Peptide Blend</option><option>Bulk Vials</option><option>Ancillary</option></select></div><div id="productGrid" class="product-grid"></div></section><aside class="cart-drawer"><div class="cart-head"><h2>Your Cart</h2><button class="icon-btn" onclick="closeCart()">×</button></div><div id="cartItems" class="cart-items"></div><div class="cart-foot">
+      <div class="subtotal"><span>Subtotal</span><b id="cartSubtotal">$0.00 NZD</b></div>
+      <div class="free-shipping-note">Free Shipping on Orders Over $200</div>
+      <button class="btn wide" type="button" data-checkout>Proceed to Checkout</button>
+    </div></aside><div id="productModal" class="modal"></div><footer class="footer"><b>HTX Peptides NZ</b><p>Research Use Only • Not For Human Use • Lab Tested • Batch Verified</p></footer></body></html>
