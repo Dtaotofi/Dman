@@ -485,10 +485,15 @@ function renderCheckoutSummary() {
   const items = cartItems();
   const form = getCheckoutFormData();
   const subtotal = cartTotal();
-  
-  const ship = shippingCost(subtotal, form.shipping);
-  const total = subtotal + ship;
-  const option = SHIPPING_OPTIONS[form.shipping] || SHIPPING_OPTIONS.standard;
+
+const issue = bacWaterMinimumIssue();
+
+if (issue) {
+  alert(issue);
+  return;
+}
+
+const selectedShipping = SHIPPING_OPTIONS[form.shipping] || SHIPPING_OPTIONS.standard;
 
   if (!items.length) {
     summary.innerHTML = '<p class="muted">Your cart is empty.</p><a class="btn wide" href="shop.html">Return to Shop</a>';
