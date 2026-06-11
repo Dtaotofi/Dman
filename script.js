@@ -343,7 +343,6 @@ function renderProducts(limit) {
     ? visibleProducts.map(productCard).join('')
     : '<p class="muted">No products found.</p>';
 }
-}
 function showReconAddon(product) {
   return product.category !== 'Ancillary' && product.category !== 'Bulk Vials' && product.id !== 'retavaluebundle';
 }
