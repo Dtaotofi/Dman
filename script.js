@@ -18,8 +18,8 @@ const PRODUCTS = [
   { id: 'klow80bulk', name: 'KLOW Bulk Pack', strength: '10 x 80mg Vials', price: 1400, stock: 10, category: 'Bulk Vials', image: 'assets/KLOW Bulk.png' },
   { id: 'cjcipa10bulk', name: 'CJC-1295 + Ipamorelin Blend Bulk Pack', strength: '10 x 10mg Vials', price: 700, stock: 10, category: 'Bulk Vials', image: 'assets/CJC-IPA Blend 10mg Bulk.png' },
   { id: 'igf1bulk', name: 'IGF-1 LR3 Bulk Pack', strength: '10 x 1mg Vials', price: 1000, stock: 10, category: 'Bulk Vials', image: 'assets/IGF-1 Bulk.png' },
-  { id: 'bac3', name: 'BAC Water', strength: '3ml', price: 20, stock: 30, category: 'Ancillary', image: 'assets/bac-water-3ml.png' },
-  { id: 'bac10', name: 'BAC Water', strength: '10ml', price: 30, stock: 30, category: 'Ancillary', image: 'assets/bac-water-10ml.png' },
+  { id: 'bac3', name: 'BAC Water', strength: '3ml', price: 10, stock: 30, category: 'Ancillary', image: 'assets/bac-water-3ml.png' },
+  { id: 'bac10', name: 'BAC Water', strength: '10ml', price: 20, stock: 30, category: 'Ancillary', image: 'assets/bac-water-10ml.png' },
   { id: 'reconkit', name: 'Recon & Injection Kit', strength: 'Complete Kit', price: 40, stock: 50, category: 'Ancillary', image: 'assets/Recon Injection Kit.jpg', description: 'Complete reconstitution and injection accessory kit supplied for research use only.', details: ['10mL BAC Water', '3mL Luer Lock syringe', 'Drawing needle', '5 x 100IU insulin syringes', '10 x alcohol prep wipes'] },
   { id: 'sterilekit5', name: 'Sterile Injection Kit', strength: '5 Pack', price: 10, stock: 20, category: 'Ancillary', image: 'assets/Sterile injection kit 5 pack.jpg', description: 'Sterile injection accessory kit supplied for research use only.', details: ['5 x 100IU insulin syringes', '10 x alcohol prep wipes', 'Sterile and single use'] },
   { id: 'sterilekit10', name: 'Sterile Injection Kit', strength: '10 Pack', price: 15, stock: 20, category: 'Ancillary', image: 'assets/Sterile injection kit 10 pack.jpg', description: 'Sterile injection accessory kit supplied for research use only.', details: ['10 x 100IU insulin syringes', '20 x alcohol prep wipes', 'Sterile and single use'] }
