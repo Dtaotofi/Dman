@@ -18,7 +18,7 @@ const PRODUCTS = [
   { id: 'klow80bulk', name: 'KLOW Bulk Pack', strength: '10 x 80mg Vials', price: 1400, stock: 10, category: 'Bulk Vials', image: 'assets/KLOW Bulk.png', details: ['10 x 80mg vials • Weekly bulk order cycle • Approx. 10 day turnaround'] },
   { id: 'cjcipa10bulk', name: 'CJC-1295 + Ipamorelin Blend Bulk Pack', strength: '10 x 10mg Vials', price: 700, stock: 10, category: 'Bulk Vials', image: 'assets/CJC-IPA Blend 10mg Bulk.png', details: ['10 x 10mg vials • Weekly bulk order cycle • Approx. 10 day turnaround'] },
   { id: 'igf1bulk', name: 'IGF-1 LR3 Bulk Pack', strength: '10 x 1mg Vials', price: 1000, stock: 10, category: 'Bulk Vials', image: 'assets/IGF-1 Bulk.png', details: ['10 x 1mg vials • Weekly bulk order cycle • Approx. 10 day turnaround'] },
-  { id: '3', name: ' Water', strength: '3ml', price: 10, stock: 30, category: 'Ancillary', image: 'assets/-water-3ml.png', description: ' Water supplied for research use only. Available only with orders totalling $50 NZD or more.' },
+  { id: 'bac3', name: 'BAC Water', strength: '3ml', price: 10, stock: 30, category: 'Ancillary', image: 'assets/bac-water-3ml.png', description: 'BAC Water supplied for research use only. Available only with orders totalling $50 NZD or more.' },
   { id: 'bac10', name: 'BAC Water', strength: '10ml', price: 20, stock: 30, category: 'Ancillary', image: 'assets/bac-water-10ml.png', description: 'BAC Water supplied for research use only. Available only with orders totalling $50 NZD or more.' },
   { id: 'reconkit', name: 'Recon & Injection Kit', strength: 'Complete Kit', price: 30, stock: 20, category: 'Ancillary', image: 'assets/Recon Injection Kit.jpg', description: 'Complete reconstitution and injection accessory kit supplied for research use only.', details: ['10mL BAC Water', '3mL Luer Lock syringe', 'Drawing needle', '5 x 100IU insulin syringes', '10 x alcohol prep wipes'] },
   { id: 'sterilekit5', name: 'Sterile Injection Kit', strength: '5 Pack', price: 10, stock: 20, category: 'Ancillary', image: 'assets/Sterile injection kit 5 pack.jpg', description: 'Sterile injection accessory kit supplied for research use only.', details: ['5 x 100IU insulin syringes', '10 x alcohol prep wipes', 'Sterile and single use'] },
@@ -169,8 +169,9 @@ function renderCart() {
   }
 
   const subtotal = document.querySelector('#cartSubtotal');
-  if (subtotal) subtotal.textContent = money(cartTotal());
-}const checkoutBtn = document.querySelector('[data-checkout]');
+if (subtotal) subtotal.textContent = money(cartTotal());
+
+const checkoutBtn = document.querySelector('[data-checkout]');
 const cartFoot = document.querySelector('.cart-foot');
 const issue = bacWaterMinimumIssue();
 
