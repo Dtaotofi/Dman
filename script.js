@@ -463,7 +463,7 @@ function generateOrderNumber() {
 }
 
 function shippingCost(subtotal, key) {
-  if (subtotal >= 350) return 0;
+  if (subtotal >= 300) return 0;
   const option = SHIPPING_OPTIONS[key] || SHIPPING_OPTIONS.standard;
   return option.price;
 }
@@ -507,7 +507,7 @@ function renderCheckoutSummary() {
     </div>
     <div class="checkout-totals">
       <div><span>Subtotal</span><b>${money(subtotal)}</b></div>
-      <div><span>${subtotal >= 350 ? 'Free Shipping' : option.label}</span><b>${ship === 0 ? '$0.00 NZD' : money(ship)}</b></div>
+      <div><span>${subtotal >= 300 ? 'Free Shipping' : option.label}</span><b>${ship === 0 ? '$0.00 NZD' : money(ship)}</b></div>
       <div class="checkout-total"><span>Total</span><b>${money(total)}</b></div>
     </div>
   `;
@@ -554,7 +554,7 @@ function placeBankOrder(event) {
       method: selectedShipping.label,
       eta: selectedShipping.eta,
       cost: shipping,
-      freeShippingApplied: subtotal >= 350
+      freeShippingApplied: subtotal >= 300
     },
     total,
     payment: {
