@@ -83,6 +83,23 @@ function cartCount() {
   return cartItems().reduce((sum, item) => sum + item.qty, 0);
 }
 
+function bacWaterMinimumIssue() {
+  const items = cartItems();
+  const subtotal = cartTotal();
+
+  const hasBacWater = items.some(item =>
+    item.id === 'bac3' || item.id === 'bac10'
+  );
+
+  if (hasBacWater && subtotal < 50) {
+    return 'BAC Water is only available with orders of $50 NZD or more.';
+  }
+
+  return null;
+}
+
+function addToCart(id, qty = 1) {
+
 function addToCart(id, qty = 1) {
   const product = getProduct(id);
   if (!product) return;
@@ -170,6 +187,13 @@ function renderCart() {
 
   const subtotal = document.querySelector('#cartSubtotal');
 if (subtotal) subtotal.textContent = money(cartTotal());
+  const checkoutBtn = document.querySelector('[data-checkout]');
+const issue = bacWaterMinimumIssue();
+
+if (checkoutBtn) {
+  checkoutBtn.disabled = Boolean(issue);
+  checkoutBtn.classList.toggle('disabled', Boolean(issue));
+}
 
 const checkoutBtn = document.querySelector('[data-checkout]');
 const cartFoot = document.querySelector('.cart-foot');
@@ -189,7 +213,7 @@ if (checkoutBtn) {
   checkoutBtn.disabled = Boolean(issue);
   checkoutBtn.classList.toggle('disabled', Boolean(issue));
 }
-
+}
 function openCart() {
   document.body.classList.add('cart-open');
   renderCart();
