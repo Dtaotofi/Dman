@@ -271,14 +271,78 @@ function renderProducts(limit) {
   const grid = document.querySelector('#productGrid');
   if (!grid) return;
 
-  const isShop = Boolean(document.querySelector('#searchInput') || document.querySelector('#categoryFilter'));
-  const products = isShop ? filteredProducts() : PRODUCTS;
+  const isHome = document.body.classList.contains('home-page');
+  const isBulkPage = window.location.pathname.includes('bulk-vials.html');
+
+  let products;
+
+  if (isHome) {
+    const homeOrder = [
+      'retavaluebundle',
+      'reta10',
+      'bpctb20',
+      'klow80',
+      'cjcipa10',
+      'igf1lr3',
+      'bpc5bulk',
+      'tb5bulk'
+    ];
+
+    products = homeOrder
+      .map(id => getProduct(id))
+      .filter(Boolean);
+
+  } else if (isBulkPage) {
+
+    const bulkOrder = [
+      'bpc5bulk',
+      'tb5bulk',
+      'bpc10bulk',
+      'tb10bulk',
+      'reta10bulk',
+      'tesa10bulk',
+      'bpctb10bulk',
+      'bpctb20bulk',
+      'klow80bulk',
+      'cjcipa10bulk',
+      'igf1bulk'
+    ];
+
+    products = bulkOrder
+      .map(id => getProduct(id))
+      .filter(Boolean);
+
+  } else {
+
+    const shopOrder = [
+      'retavaluebundle',
+      'reta10',
+      'reta20',
+      'mots10',
+      'bpctb20',
+      'klow80',
+      'cjcipa10',
+      'igf1lr3',
+      'bac3',
+      'bac10',
+      'reconkit',
+      'sterilekit5',
+      'sterilekit10'
+    ];
+
+    products = shopOrder
+      .map(id => getProduct(id))
+      .filter(Boolean);
+
+  }
+
   const amount = Number(limit || document.body.dataset.limit || products.length);
   const visibleProducts = products.slice(0, amount);
 
   grid.innerHTML = visibleProducts.length
     ? visibleProducts.map(productCard).join('')
     : '<p class="muted">No products found.</p>';
+}
 }
 function showReconAddon(product) {
   return product.category !== 'Ancillary' && product.category !== 'Bulk Vials' && product.id !== 'retavaluebundle';
