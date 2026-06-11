@@ -87,17 +87,20 @@ function bacWaterMinimumIssue() {
   const items = cartItems();
   const subtotal = cartTotal();
 
-  const hasBacWater = items.some(item =>
-    item.id === 'bac3' || item.id === 'bac10'
+  const hasRestrictedItem = items.some(item =>
+    item.id === 'bac3' ||
+    item.id === 'bac10' ||
+    item.id === 'reconkit' ||
+    item.id === 'sterilekit5' ||
+    item.id === 'sterilekit10'
   );
 
-  if (hasBacWater && subtotal < 50) {
-    return 'BAC Water is only available with orders of $50 NZD or more.';
+  if (hasRestrictedItem && subtotal < 50) {
+    return 'BAC Water and accessory kits are only available with orders of $50 NZD or more.';
   }
 
   return null;
 }
-
 function addToCart(id, qty = 1) {
   const product = getProduct(id);
   if (!product) return;
