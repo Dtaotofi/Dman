@@ -444,6 +444,14 @@ function renderCheckoutSummary() {
   const items = cartItems();
   const form = getCheckoutFormData();
   const subtotal = cartTotal();
+  const hasBacWater = items.some(item =>
+  item.id === 'bac3' || item.id === 'bac10'
+);
+
+if (hasBacWater && subtotal < 50) {
+  alert('BAC Water is only available with orders of $50 NZD or more.');
+  return;
+}
   const ship = shippingCost(subtotal, form.shipping);
   const total = subtotal + ship;
   const option = SHIPPING_OPTIONS[form.shipping] || SHIPPING_OPTIONS.standard;
