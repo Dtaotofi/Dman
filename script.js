@@ -385,7 +385,7 @@ function viewProduct(id) {
 
     <label class="addon-label">
       <input type="checkbox" id="addReconKit">
-      <span>Add Complete Recon Kit (+$40)</span>
+      <span>Add Complete Recon Kit (+$30)</span>
     </label>
     <small>Includes 10mL BAC Water, 3mL Luer Lock syringe, drawing needle, 5 insulin syringes and 10 alcohol prep wipes.</small>
   </div>
