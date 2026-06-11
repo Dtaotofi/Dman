@@ -2421,4 +2421,27 @@ body.cart-open .cart-drawer,
     border:1px solid rgba(75,155,255,.25);
     border-radius:20px;
 }
+.bulk-card{
+  background:rgba(255,255,255,.03);
+  border:1px solid rgba(75,155,255,.25);
+  border-radius:20px;
+  padding:24px;
+  margin-bottom:24px;
+}
+
+.bulk-table{
+  width:100%;
+  border-collapse:collapse;
+}
+
+.bulk-table th,
+.bulk-table td{
+  padding:14px;
+  border-bottom:1px solid rgba(255,255,255,.08);
+  text-align:left;
+}
+
+.bulk-table th{
+  color:#4b9bff;
+}
 
