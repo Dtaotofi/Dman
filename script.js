@@ -170,6 +170,23 @@ function renderCart() {
 
   const subtotal = document.querySelector('#cartSubtotal');
   if (subtotal) subtotal.textContent = money(cartTotal());
+}const checkoutBtn = document.querySelector('[data-checkout]');
+const cartFoot = document.querySelector('.cart-foot');
+const issue = bacWaterMinimumIssue();
+
+document.querySelector('#cartWarning')?.remove();
+
+if (issue && cartFoot) {
+  const warning = document.createElement('p');
+  warning.id = 'cartWarning';
+  warning.className = 'cart-warning';
+  warning.textContent = issue;
+  cartFoot.prepend(warning);
+}
+
+if (checkoutBtn) {
+  checkoutBtn.disabled = Boolean(issue);
+  checkoutBtn.classList.toggle('disabled', Boolean(issue));
 }
 
 function openCart() {
