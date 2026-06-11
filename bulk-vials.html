@@ -43,57 +43,21 @@
 
 <section class="page-hero">
   <p class="eyebrow">Bulk Vials</p>
-  <h1>Bulk Vial Packs</h1>
-  <p class="lead">5 and 10 vial packs available through our weekly bulk order cycle.</p>
+  <h1>10 Vial Bulk Packs</h1>
+  <p class="lead">Bulk vial packs available through our weekly bulk order cycle.</p>
 </section>
 
 <section class="section">
-  <div class="bulk-card">
-    <h2>Bulk Price List</h2>
 
-    <table class="bulk-table">
-      <tr>
-        <th>Product</th>
-        <th>5 Vials</th>
-        <th>10 Vials</th>
-      </tr>
-      <tr>
-        <td>Retatrutide 10mg</td>
-        <td>$400</td>
-        <td>$700</td>
-      </tr>
-      <tr>
-        <td>Retatrutide 20mg</td>
-        <td>$650</td>
-        <td>$1200</td>
-      </tr>
-      <tr>
-        <td>BPC-157 10mg</td>
-        <td>$400</td>
-        <td>$800</td>
-      </tr>
-      <tr>
-        <td>TB-500 10mg</td>
-        <td>$600</td>
-        <td>$1100</td>
-      </tr>
-      <tr>
-        <td>BPC/TB Blend 20mg</td>
-        <td>$900</td>
-        <td>$1700</td>
-      </tr>
-      <tr>
-        <td>KLOW 80mg</td>
-        <td>$1000</td>
-        <td>$2200</td>
-      </tr>
-      <tr>
-        <td>CJC-1295 + Ipamorelin 10mg</td>
-        <td>$550</td>
-        <td>$1000</td>
-      </tr>
-    </table>
+  <div class="filters" style="display:none;">
+    <input id="searchInput" placeholder="Search products...">
+
+    <select id="categoryFilter">
+      <option value="Bulk Vials" selected>Bulk Vials</option>
+    </select>
   </div>
+
+  <div id="productGrid" class="product-grid"></div>
 
   <div class="bulk-card">
     <h2>How Bulk Orders Work</h2>
@@ -105,6 +69,7 @@
       <li>ETA updates are provided after order confirmation</li>
     </ul>
   </div>
+
 </section>
 
 <aside class="cart-drawer">
@@ -124,7 +89,7 @@
     <button class="btn wide" type="button" data-checkout>Proceed to Checkout</button>
   </div>
 </aside>
-
+<div id="productModal" class="modal"></div>
 <footer class="footer">
   <b>HTX Peptides NZ</b>
   <p>Research Use Only • Not For Human Use • Lab Tested • Batch Verified</p>
