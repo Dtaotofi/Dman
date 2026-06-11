@@ -254,9 +254,15 @@ function filteredProducts() {
   const search = (document.querySelector('#searchInput')?.value || '').toLowerCase().trim();
   const category = document.querySelector('#categoryFilter')?.value || 'all';
 
+  const isBulkPage = window.location.pathname.includes('bulk-vials.html');
+
   return PRODUCTS.filter(product => {
+    if (isBulkPage && product.category !== 'Bulk Vials') return false;
+    if (!isBulkPage && product.category === 'Bulk Vials') return false;
+
     const matchesSearch = !search || `${product.name} ${product.strength} ${product.category}`.toLowerCase().includes(search);
     const matchesCategory = category === 'all' || product.category === category;
+
     return matchesSearch && matchesCategory;
   });
 }
